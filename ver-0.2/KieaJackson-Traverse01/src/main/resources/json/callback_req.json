@@ -1,0 +1,7 @@
+{
+  "counterpartyTransactionId": "82622468196393",
+  "reason": "remit completed",
+  "sourceOperatorCode": "airpay",
+  "status": "RECEIVED",
+  "transactionId": "702c74a5-ecea-4545-ae23-9afa9d8b73d1"
+}

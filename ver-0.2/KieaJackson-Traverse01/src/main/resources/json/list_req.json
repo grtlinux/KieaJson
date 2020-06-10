@@ -1,0 +1,11 @@
+operatorCode(S): (required) operator slug remove this line before submit the document
+            offset(N): offset for pagination
+            limit(N): limit for pagination
+            from(S): from time
+            to(S): to time
+''
+0
+100
+2020-06-01 00:00:00
+2020-06-01 23:59:59
+
