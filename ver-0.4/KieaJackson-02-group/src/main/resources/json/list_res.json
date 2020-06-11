@@ -1,0 +1,863 @@
+{
+    "status": "success",
+    "message": "OK",
+    "_metadata": {
+        "totalRecords": 34,
+        "totalPages": 1,
+        "next": null,
+        "self": "/v1/remittances?limit=100&offset=0",
+        "prev": null
+    },
+    "data": [
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "987d5c5c-1b86-490d-4537-1bafd3cf2f09",
+            "counterpartyTransactionId": "9624064239",
+            "withdrawalId": null,
+            "sourceTransactionId": "UUID-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "2cd9ecf3-49fd-42e3-4e34-6926b95d9ff1",
+            "counterpartyTransactionId": "7739878799",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "31743732-4b08-454d-7559-cda0c0a6a4a5",
+            "counterpartyTransactionId": "1036715611",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "ead6530b-5c83-472b-464f-abdcdd1cdf46",
+            "counterpartyTransactionId": "1659974805",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "0bccaf57-efcb-4470-714b-da15e926373c",
+            "counterpartyTransactionId": "9148712752",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "848ec7be-f342-46a6-72a9-340fdeb3eb0b",
+            "counterpartyTransactionId": "3022688418",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "b6ac2ed0-6550-4e8f-478c-f77e28d1c093",
+            "counterpartyTransactionId": "7615398766",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "6868566e-8278-4b75-42bd-e472cd8a12e9",
+            "counterpartyTransactionId": "0185205094",
+            "withdrawalId": "",
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "RECEIVED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "c71d8e1b-a490-49b9-4ea4-cf96df5c7c56",
+            "counterpartyTransactionId": "3708744028",
+            "withdrawalId": "",
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "RECEIVED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "1c9b7281-24f8-4633-7077-f3929394fdb2",
+            "counterpartyTransactionId": "8704434118",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "e7a6e04d-a787-4e7c-61dd-af82a4a1354a",
+            "counterpartyTransactionId": "1525274259",
+            "withdrawalId": "",
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "RECEIVED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "4db052e7-340b-4f3e-5f8e-45bc8f5690d2",
+            "counterpartyTransactionId": "1816702396",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "d11fb678-6f0f-4223-52fe-11191f299b3d",
+            "counterpartyTransactionId": "9915294288",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "93ce8d70-f99e-4880-5a5a-1e2865c84a2f",
+            "counterpartyTransactionId": "3576034718",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "REJECTED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "db018527-3bcd-4979-6ff0-c6920d87a076",
+            "counterpartyTransactionId": "5822699778",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "REJECTED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "cb5af0ee-78da-4377-5730-be70a6b574b7",
+            "counterpartyTransactionId": "3056952682",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "REJECTED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "7318c2e8-8763-4af6-4cdf-1ba7067f3242",
+            "counterpartyTransactionId": "6257540862",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "356659aa-c355-40d6-7ea8-6ade55127481",
+            "counterpartyTransactionId": "6224840182",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "9809c9f3-cb48-4c7b-4af4-579820511dc8",
+            "counterpartyTransactionId": "4023125715",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "a266b12d-2a47-403a-60b4-8579a274e5cb",
+            "counterpartyTransactionId": "3557792192",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "a8d99d02-8aa1-4ae5-418c-5e574cc86b1d",
+            "counterpartyTransactionId": "6698430561",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "9813f0fe-f9e3-42fd-4f9c-37b5fb710502",
+            "counterpartyTransactionId": "9403187461",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "868db396-fec3-4b1b-7146-348307a5fbcc",
+            "counterpartyTransactionId": "6553012127",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "PENDING",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "dcc6cce5-f444-42d3-62ad-555c9a6962bc",
+            "counterpartyTransactionId": "8687558208",
+            "withdrawalId": "",
+            "sourceTransactionId": "UUID-SCB-12345",
+            "status": "RECEIVED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "fffd017b-b529-4c82-7285-614409f3396a",
+            "counterpartyTransactionId": "5901390869",
+            "withdrawalId": "",
+            "sourceTransactionId": "UUID-SCB-12345",
+            "status": "RECEIVED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "37175.9600",
+            "transactionAmount": "0.0000",
+            "transactionFeeAmount": "",
+            "transactionId": "c608c263-03d5-4d11-6c97-f037c45931ce",
+            "counterpartyTransactionId": "3010640471",
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-SCB-12345",
+            "status": "REJECTED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "THA",
+            "deliveryMethod": "account_deposit",
+            "transactionCurrency": "THB",
+            "feeModel": "included",
+            "from": {
+                "amount": "2.0000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "37175.9600",
+                "operatorCode": "scb",
+                "currency": "THB"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "8affaf9e-109c-48b8-6667-4ded0bf3415d",
+            "counterpartyTransactionId": "1572333453172",
+            "withdrawalId": "106838485",
+            "sourceTransactionId": "mock-source-transactionId-uuid-1234",
+            "status": "READY",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "dbb777e0-07ca-4b56-577f-971705113713",
+            "counterpartyTransactionId": "1572621061865",
+            "withdrawalId": "295699904",
+            "sourceTransactionId": "AUTOMATE-LYHOUR-12345",
+            "status": "READY",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "1.5000",
+            "transactionAmount": "3.7000",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "dc910e8b-ee1f-4103-7e86-ee6ab65898e9",
+            "counterpartyTransactionId": null,
+            "withdrawalId": null,
+            "sourceTransactionId": "MANUAL-LYHOUR-12345",
+            "status": "REJECTED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "3.7000",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "1.5000",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "63703fe2-3939-4e02-655b-236fffd549c8",
+            "counterpartyTransactionId": null,
+            "withdrawalId": null,
+            "sourceTransactionId": "AUTOMATE-LYHOUR-12345",
+            "status": "REJECTED",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "7bb9ad5c-f1d3-4739-5fdb-cb0b4b80255e",
+            "counterpartyTransactionId": "1400729001593",
+            "withdrawalId": "989563267",
+            "sourceTransactionId": "AUTOMATE-LYHOUR-12345",
+            "status": "READY",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "03e68c2f-dc69-44e1-5b41-ed82dfb1f426",
+            "counterpartyTransactionId": "1333706023719",
+            "withdrawalId": "169563350",
+            "sourceTransactionId": "AUTOMATE-LYHOUR-12345",
+            "status": "READY",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "757f9363-9ed7-41cb-589d-9baf44ad156a",
+            "counterpartyTransactionId": "1262868464044",
+            "withdrawalId": "125973917",
+            "sourceTransactionId": "AUTOMATE-LYHOUR-12345",
+            "status": "READY",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        },
+        {
+            "withdrawableAmount": "3.2300",
+            "transactionAmount": "5.4300",
+            "transactionFeeAmount": "2.2000",
+            "transactionId": "4b457514-85e2-4e6f-5af4-5139f3eec528",
+            "counterpartyTransactionId": "1010686718807",
+            "withdrawalId": "381008408",
+            "sourceTransactionId": "AUTOMATE-LYHOUR-12345",
+            "status": "READY",
+            "sourceCountry": "KOR",
+            "destinationCountry": "KHM",
+            "deliveryMethod": "cash",
+            "transactionCurrency": "USD",
+            "feeModel": "included",
+            "from": {
+                "amount": "5.4300",
+                "operatorCode": "hanwha",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "3.2300",
+                "operatorCode": "lyhour",
+                "currency": "USD"
+            }
+        }
+    ]
+}
