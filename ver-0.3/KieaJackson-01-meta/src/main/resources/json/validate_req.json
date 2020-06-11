@@ -1,0 +1,43 @@
+{
+    "receiver": {
+        "firstName": "BZIDWB",
+        "lastName": "USBARH",
+        "bankCode": "SICOTHBK",
+        "accountId": "receiverAccountId"
+    },
+    "deliveryMethod": "account_deposit",
+    "sender": {
+        "firstName": "SKANTE",
+        "lastName": "MYCYBX",
+        "address": {
+            "address": "senderAddress",
+            "city": "senderCity",
+            "countryCode": "THA",
+            "postalCode": "senderZipCode"
+        },
+        "nationalityCountryCode": "KOR",
+        "mobilePhone": {
+            "number": "881111111",
+            "countryCode": "66"
+        },
+        "idNumber": "idNumber"
+    },
+    "destination": {
+        "country": "THA",
+        "receive": {
+            "currency": "THB"
+        },
+        "operatorCode": "scb"
+    },
+    "remark": "This is SCB test remark",
+    "source": {
+        "country": "KOR",
+        "send": {
+            "amount": "2",
+            "currency": "USD"
+        },
+        "transactionId": "AUTOMATE-SCB-12345"
+    },
+    "saveReport": "TRUE"
+}   
+ 

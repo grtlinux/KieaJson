@@ -1,0 +1,65 @@
+{
+    "status": "success",
+    "message": "OK",
+    "data": {
+        "transactionId": "42b1ea8e-a685-40da-42fd-1b87d5956151",
+        "deliveryMethod": "account_deposit",
+        "source": {
+            "transactionId": "AUTOMATE-SCB-12345",
+            "operatorCode": "hanwha",
+            "country": "KOR",
+            "send": {
+                "amount": "2.0000",
+                "currency": "USD"
+            }
+        },
+        "destination": {
+            "transactionId": "2560633009",
+            "operatorCode": "scb",
+            "country": "THA",
+            "receive": {
+                "amount": "37175.9600",
+                "currency": "THB"
+            }
+        },
+        "fee": {
+            "amount": "0.7000",
+            "currency": "USD",
+            "model": "included"
+        },
+        "rate": {
+            "from": {
+                "amount": "1.0000",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "30.1234",
+                "currency": "THB"
+            }
+        },
+        "sender": {
+            "firstName": "SKANTE",
+            "lastName": "MYCYBX",
+            "address": {
+                "address": "senderAddress",
+                "city": "senderCity",
+                "countryCode": "THA",
+                "postalCode": "senderZipCode"
+            },
+            "nationalityCountryCode": "KOR",
+            "mobilePhone": {
+                "number": "881111111",
+                "countryCode": "66"
+            },
+            "idNumber": "idNumber"
+        },
+        "receiver": {
+            "firstName": "BZIDWB",
+            "lastName": "USBARH",
+            "bankCode": "SICOTHBK",
+            "accountId": "receiverAccountId"
+        },
+        "remark": "This is SCB test remark",
+        "status": "PENDING"
+    }
+}

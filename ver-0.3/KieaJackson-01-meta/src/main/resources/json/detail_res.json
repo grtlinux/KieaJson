@@ -1,0 +1,234 @@
+{
+    "status": "success",
+    "message": "OK",
+    "data": [
+        {
+            "fee": "2.2000",
+            "deliveryMethod": "cash",
+            "feeModel": "included",
+            "feeCurrency": "USD",
+            "feeType": "FLATRATE",
+            "sender": {
+                "schema": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "description": "a schema for sender who sending money from Thailand to Cambodia using cash",
+                    "properties": {
+                        "address": {
+                            "description": "senders address",
+                            "properties": {
+                                "city": {
+                                    "description": "senders city",
+                                    "type": "string"
+                                },
+                                "countryCode": {
+                                    "description": "senders country code",
+                                    "maxLength": 3,
+                                    "type": "string"
+                                },
+                                "line1": {
+                                    "description": "senders address line 1",
+                                    "type": "string"
+                                },
+                                "line2": {
+                                    "description": "senders address line 2",
+                                    "type": "string"
+                                },
+                                "line3": {
+                                    "description": "senders address line 3",
+                                    "type": "string"
+                                },
+                                "postalCode": {
+                                    "description": "senders postal code",
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "description": "senders state",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "line1",
+                                "city",
+                                "state",
+                                "postalCode",
+                                "countryCode"
+                            ],
+                            "type": "object"
+                        },
+                        "dob": {
+                            "description": "sender's date of birth",
+                            "format": "date",
+                            "type": "string"
+                        },
+                        "firstName": {
+                            "description": "sender's first name",
+                            "type": "string"
+                        },
+                        "idExpirationDate": {
+                            "description": "sender's passport expiry date",
+                            "format": "date",
+                            "type": "string"
+                        },
+                        "idIssueDate": {
+                            "description": "sender's passport issued date",
+                            "format": "date",
+                            "type": "string"
+                        },
+                        "idNumber": {
+                            "description": "sender's passport number",
+                            "type": "string"
+                        },
+                        "lastName": {
+                            "description": "sender's last name",
+                            "type": "string"
+                        },
+                        "middleName": {
+                            "description": "sender's middle name",
+                            "type": "string"
+                        },
+                        "mobilePhone": {
+                            "description": "sender's mobile phone.",
+                            "properties": {
+                                "countryCode": {
+                                    "description": "senders mobile phone country code",
+                                    "maxLength": 3,
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "description": "senders mobile phone number",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "number",
+                                "countryCode"
+                            ],
+                            "type": "object"
+                        },
+                        "namePrefix": {
+                            "description": "sender's prefix name",
+                            "type": "string"
+                        },
+                        "purpose": {
+                            "description": "sender's purpose",
+                            "type": "string"
+                        },
+                        "secondLastName": {
+                            "description": "sender's second last name",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "firstName",
+                        "lastName",
+                        "address",
+                        "mobilePhone",
+                        "dob",
+                        "purpose",
+                        "idNumber",
+                        "idIssueDate",
+                        "idExpirationDate"
+                    ],
+                    "type": "object"
+                }
+            },
+            "receiver": {
+                "schema": {
+                    "$schema": "http://json-schema.org/draft-07/schema#",
+                    "description": "a schema for sender who sending money from Thailand to Cambodia using cash",
+                    "properties": {
+                        "address": {
+                            "description": "receiver address",
+                            "properties": {
+                                "city": {
+                                    "description": "receiver city",
+                                    "type": "string"
+                                },
+                                "countryCode": {
+                                    "description": "receiver country code",
+                                    "maxLength": 3,
+                                    "type": "string"
+                                },
+                                "line1": {
+                                    "description": "receiver address line 1",
+                                    "type": "string"
+                                },
+                                "line2": {
+                                    "description": "receiver address line 2",
+                                    "type": "string"
+                                },
+                                "line3": {
+                                    "description": "receiver address line 3",
+                                    "type": "string"
+                                },
+                                "postalCode": {
+                                    "description": "receiver postal code",
+                                    "type": "string"
+                                },
+                                "state": {
+                                    "description": "receiver state",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "line1",
+                                "city",
+                                "state",
+                                "postalCode",
+                                "countryCode"
+                            ],
+                            "type": "object"
+                        },
+                        "firstName": {
+                            "description": "receiver's first name",
+                            "type": "string"
+                        },
+                        "lastName": {
+                            "description": "receiver's last name",
+                            "type": "string"
+                        },
+                        "middleName": {
+                            "description": "receiver's middle name",
+                            "type": "string"
+                        },
+                        "mobilePhone": {
+                            "description": "receiver's mobile phone.",
+                            "properties": {
+                                "countryCode": {
+                                    "description": "receiver mobile phone country code",
+                                    "maxLength": 3,
+                                    "type": "string"
+                                },
+                                "number": {
+                                    "description": "receiver mobile phone number",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "number",
+                                "countryCode"
+                            ],
+                            "type": "object"
+                        },
+                        "namePrefix": {
+                            "description": "receiver's prefix name",
+                            "type": "string"
+                        },
+                        "required": [
+                            "firstName",
+                            "lastName",
+                            "address",
+                            "mobilePhone"
+                        ],
+                        "secondLastName": {
+                            "description": "receiver's second last name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "metadata": null
+        }
+    ]
+}
