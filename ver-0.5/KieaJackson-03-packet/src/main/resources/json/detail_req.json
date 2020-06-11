@@ -1,0 +1,16 @@
+GET
+
+sourceCountry(S): The country which is the MTO sender
+            destinationCountry(S): The country which sending MTO would like to send money to
+            destinationOperatorCode(S): The operator code of the destination
+            withDrawableAmount(S): The amount which the sender wishes to send.
+            transactionCurrency(S): A transaction currency code in ISO-4217 format.
+            deliveryMethod(S): The delivery method which the sending MTO would like to filter.
+KOR
+KHM
+lyhour
+1.500
+USD
+cash
+
+
