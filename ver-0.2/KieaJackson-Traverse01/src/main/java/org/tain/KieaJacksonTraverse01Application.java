@@ -85,30 +85,47 @@ public class KieaJacksonTraverse01Application implements CommandLineRunner {
 		//JsonNode rootNode = objectMapper.valueToTree(jsonString);
 		//JsonNode rootNode = objectMapper.convertValue(jsonString, JsonNode.class);
 		
-		System.out.println(">>>>> " + rootNode);
+		//System.out.println(">>>>> " + rootNode);
+		System.out.println(">>>>> " + rootNode.toPrettyString());
+		
 		process("", rootNode);
 	}
 	
 	////////////////////////////////////////////////////////////////////////
 	/*
-	"result": [
-		"Hello", "world", "Hi", "Okey"
-	]
+	"result": [ "Hello", "world", "Hi", "Okey" ]
 	 */
 	private void process(String prefix, JsonNode currentNode) {
 		if (currentNode.isArray()) {
 			ArrayNode arrayNode = (ArrayNode) currentNode;
-			System.out.println(">>>>> size = " + arrayNode.size());
+			System.out.println(">>>>> " + prefix + "._arrSize = " + arrayNode.size());
 			Iterator<JsonNode> node = arrayNode.elements();
-			int index = 1;
+			int idx = 1;
+			StringBuffer sb = new StringBuffer("");
 			while (node.hasNext()) {
-				process(!prefix.isEmpty() ? prefix + "[" + index + "]" : "[" + String.valueOf(index) + "]", node.next());
-				index += 1;
+				JsonNode jsonNode = node.next();
+				
+				if (jsonNode.isNumber()) {
+					//System.out.println(">>>>> isNumber: " + jsonNode.isNumber() + " -> " + jsonNode.asLong());
+					sb.append(", " + jsonNode.asLong());
+				} else if (jsonNode.isTextual()) {
+					//System.out.println(">>>>> isTextural: " + jsonNode.isTextual() + " -> " + jsonNode.asText());
+					sb.append(", " + jsonNode.asText());
+				} else {
+					//System.out.println(">>>>> isObject: " + jsonNode.isObject() + " -> " + jsonNode.asText());
+					process(!prefix.isEmpty() ? prefix + "[" + idx + "]" : "[" + String.valueOf(idx) + "]", jsonNode);
+				}
+				
+				idx ++;
+			}
+			if (!"".equals(sb.toString())) {
+				if (flag) System.out.println(">>>>> " + prefix + ": " + sb.delete(0, 2).toString());
 			}
 		} else if (currentNode.isObject()) {
 			currentNode.fields().forEachRemaining(entry -> process(!prefix.isEmpty() ? prefix + "." + entry.getKey() : entry.getKey(), entry.getValue()));
 		} else {
-			System.out.println(">>>>> " + prefix + ": " + (currentNode.isNull() ? "-NULL-" : currentNode.toString()));
+			if (!flag) System.out.println(">>>>> " + prefix + ": " + (currentNode.isNull() ? "-NULL-" : currentNode.toString()));
+			if (flag) System.out.println(">>>>> " + prefix);
 		}
 	}
 
