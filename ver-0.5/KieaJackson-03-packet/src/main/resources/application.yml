@@ -44,6 +44,8 @@ spring:
   
 ##################################################
 json:
+  test:
+    file: src/main/resources/json/test.json
   packet:
     file: src/main/resources/table/table_packet.json
 

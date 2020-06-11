@@ -1,6 +1,7 @@
 package org.tain;
 
 import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,9 @@ import org.tain.repository.PacketRepository;
 import org.tain.utils.CurrentInfo;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import lombok.extern.java.Log;
 
@@ -33,7 +36,57 @@ public class KieaJackson03PacketApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		if (flag) test01();
+		if (flag) test02();
 	}
+
+	///////////////////////////////////////////////////////////////////////////////////
+
+	@Value("${json.test.file}")
+	private String jsonTestFile;
+	
+	private void test01() throws Exception {
+		log.info("KANG-20200611 >>>>> " + CurrentInfo.get());
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode rootNode = objectMapper.readValue(new File(jsonTestFile), JsonNode.class);
+		if (flag) log.info("KANG-20200611 >>>>> " + rootNode.toPrettyString());
+		
+		process("", rootNode);
+	}
+
+	private void process(String prefix, JsonNode currentNode) {
+		if (currentNode.isArray()) {
+			ArrayNode arrayNode = (ArrayNode) currentNode;
+			if (flag) System.out.println(">>>>> " + prefix + "._arrSize = " + arrayNode.size());
+			
+			Iterator<JsonNode> node = arrayNode.elements();
+			int idx = 1;
+			StringBuffer sb = new StringBuffer("");
+			while (node.hasNext()) {
+				JsonNode jsonNode = node.next();
+				
+				if (jsonNode.isNumber()) {
+					sb.append(", " + jsonNode.asLong());
+				} else if (jsonNode.isTextual()) {
+					sb.append(", " + jsonNode.asText());
+				} else {
+					process(!prefix.isEmpty() ? prefix + "[" + idx + "]" : "[" + String.valueOf(idx) + "]", jsonNode);
+				}
+				
+				idx ++;
+			}
+			
+			if (!"".equals(sb.toString())) {
+				if (flag) System.out.println(">>>>> " + prefix + ": " + sb.delete(0, 2).toString());
+			}
+		} else if (currentNode.isObject()) {
+			currentNode.fields().forEachRemaining(entry -> process(!prefix.isEmpty() ? prefix + "." + entry.getKey() : "." + entry.getKey(), entry.getValue()));
+		} else {
+			if (flag) System.out.println(">>>>> " + prefix + ": " + (currentNode.isNull() ? "-NULL-" : currentNode.toString()));
+		}
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////
 
 	@Value("${json.packet.file}")
 	private String jsonFile;
@@ -41,7 +94,7 @@ public class KieaJackson03PacketApplication implements CommandLineRunner {
 	@Autowired
 	private PacketRepository packetRepository;
 	
-	private void test01() throws Exception {
+	private void test02() throws Exception {
 		log.info("KANG-20200611 >>>>> " + CurrentInfo.get());
 		
 		ObjectMapper objectMapper = new ObjectMapper();
