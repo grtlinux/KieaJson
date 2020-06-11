@@ -93,6 +93,7 @@ public class KieaJacksonTraverse01Application implements CommandLineRunner {
 	
 	////////////////////////////////////////////////////////////////////////
 	/*
+	"number": [ 1, 2, 3, 4. 5. 6 ]
 	"result": [ "Hello", "world", "Hi", "Okey" ]
 	 */
 	private void process(String prefix, JsonNode currentNode) {
