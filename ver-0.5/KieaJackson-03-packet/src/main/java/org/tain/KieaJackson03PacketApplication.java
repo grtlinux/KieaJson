@@ -1,10 +1,12 @@
 package org.tain;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -12,8 +14,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.tain.domain.Packet;
+import org.tain.domain.Test07;
 import org.tain.object.PacketObject;
+import org.tain.object.Test07Object;
 import org.tain.repository.PacketRepository;
+import org.tain.repository.Test07Repository;
 import org.tain.utils.CurrentInfo;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -463,6 +468,12 @@ public class KieaJackson03PacketApplication implements CommandLineRunner {
 	@Value("${json.test.file07}")
 	private String jsonTestFile07;
 
+	private int sortNo = 0;
+	private Map<String, Object> map07 = null;
+
+	@Autowired
+	private Test07Repository test07Repository;
+	
 	private void test07() throws Exception {
 		log.info("KANG-20200611 >>>>> {} - {} {}", CurrentInfo.get(), 123, "Hello");
 		
@@ -470,8 +481,190 @@ public class KieaJackson03PacketApplication implements CommandLineRunner {
 		JsonNode rootNode = objectMapper.readTree(new File(jsonTestFile07));
 		if (flag) System.out.println(">>>>> " + rootNode.toPrettyString());
 		
+		if (flag) {
+			// make map
+			this.sortNo = 0;
+			this.map07 = new LinkedHashMap<>();
+			String prefix = "";
+			parsing07(prefix, rootNode);
+		}
+		
+		if (!flag) {
+			// print map07
+			for (Map.Entry<String, Object> entry : this.map07.entrySet()) {
+				String key = entry.getKey();
+				Test07Object val = (Test07Object) entry.getValue();
+				
+				if (flag) System.out.println(">>>>> " + key + " -> " + val);
+			}
+		}
+		
+		if (!flag) {
+			// covert to jsonNode
+			JsonNode jsonNode = objectMapper.convertValue(this.map07, JsonNode.class);
+			// JsonNode jsonNode = objectMapper.valueToTree(this.map07);
+			if (flag) System.out.println(">>>>> " + jsonNode.toPrettyString());
+		}
+		
+		if (flag) {
+			// load to Table
+			for (Map.Entry<String, Object> entry : this.map07.entrySet()) {
+				// String key = entry.getKey();
+				Test07Object val = (Test07Object) entry.getValue();
+				
+				this.test07Repository.save(Test07.builder().name(val.getName()).type(val.getType()).size(val.getSize()).sortNo(val.getSortNo()).build());
+			}
+		}
+		
+		if (flag) {
+			// transfer JSON to Stream
+			String prefix = "";
+			_parsing07(prefix, rootNode);
+			
+			if (flag) System.out.println(">>>>> [" + this.stream.toString() + "]");
+		}
+		
+		if (flag) {
+			// split with map07 to YAML
+			int offStart = 0;
+			int offEnd = 0;
+			int size = 0;
+			boolean arrFlag = false;
+			
+			List<String> lstKey = new ArrayList<>(this.map07.keySet());
+			for (int i=0; i < lstKey.size(); i++) {
+				
+			}
+			//this.map07.values();
+			List<Object> lstValues = new ArrayList<>(this.map07.values());
+			for (int i=0; i < lstValues.size(); i++) {
+				Test07Object val = (Test07Object) lstValues.get(i);
+			}
+			//List<Object> lstValues = this.map07.values().stream().collect(Collectors.toList());
+			for (Map.Entry<String, Object> entry : this.map07.entrySet()) {
+				// String key = entry.getKey();
+				Test07Object val = (Test07Object) entry.getValue();
+				
+				if (flag) System.out.println(">>>>> " + val.getName() + " -> " + val);
+				
+				if (val.getName().contains(".arrSize")) {
+					// array
+					offEnd = offStart + val.getSize();
+					size = Integer.valueOf(this.stream.substring(offStart, offEnd).trim());
+					if (flag) System.out.println("[" + size + "]");
+					offStart = offEnd;
+					arrFlag = true;
+					continue;
+				}
+				
+				if (arrFlag) {
+					for (int i=0; i < size; i++) {
+						offEnd = offStart + val.getSize();
+						String arritem = this.stream.substring(offStart, offEnd);
+						if (flag) System.out.println("(" + i + ") [" + arritem + "]");
+						offStart = offEnd;
+					}
+					
+					size = 0;
+					arrFlag = false;
+					continue;
+				}
+				
+				if (flag) {
+					// ValueNode
+					offEnd = offStart + val.getSize();
+					String arritem = this.stream.substring(offStart, offEnd);
+					if (flag) System.out.println("[" + arritem + "]");
+					offStart = offEnd;
+				}
+			}
+		}
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+
+	private void parsing07(String prefix, JsonNode jsonNode) throws Exception {
+		if (jsonNode.isArray()) {
+			ArrayNode arrayNode = (ArrayNode) jsonNode;
+			print07(prefix + ".arrSize", String.valueOf(arrayNode.size()));
+			
+			Iterator<JsonNode> node = arrayNode.elements();
+			while (node.hasNext()) {
+				JsonNode _jsonNode = node.next();
+				String _prefix = prefix;
+				parsing07(_prefix, _jsonNode);
+			}
+		} else if (jsonNode.isObject()) {
+			jsonNode.fields().forEachRemaining( entry -> {
+				String _prefix = prefix + "/" + entry.getKey();
+				try {
+					parsing07(_prefix, entry.getValue());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		} else if (jsonNode.isValueNode()) {
+			print07(prefix, jsonNode.asText());
+		} else {
+			throw new Exception("wrong json type...");
+		}
+	}
+	
+	private void print07(String prefix, String value) {
+		if (flag) System.out.println(">>>>> " + prefix + ": " + value);
+		
+		int size = 10;
+		if (prefix.contains(".arrSize"))
+			size = 2;
+		
+		this.map07.put(prefix, Test07Object.builder().name(prefix).type("TN").size(size).sortNo(sortNo++).build());
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////
+
+	private void _parsing07(String prefix, JsonNode jsonNode) throws Exception {
+		if (jsonNode.isArray()) {
+			ArrayNode arrayNode = (ArrayNode) jsonNode;
+			_print07(prefix + ".arrSize", String.valueOf(arrayNode.size()));
+			
+			Iterator<JsonNode> node = arrayNode.elements();
+			while (node.hasNext()) {
+				JsonNode _jsonNode = node.next();
+				String _prefix = prefix;
+				_parsing07(_prefix, _jsonNode);
+			}
+		} else if (jsonNode.isObject()) {
+			jsonNode.fields().forEachRemaining( entry -> {
+				String _prefix = prefix + "/" + entry.getKey();
+				try {
+					_parsing07(_prefix, entry.getValue());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		} else if (jsonNode.isValueNode()) {
+			_print07(prefix, jsonNode.asText());
+		} else {
+			throw new Exception("wrong json type...");
+		}
+	}
+	
+	private StringBuilder stream = new StringBuilder();
+	
+	private void _print07(String prefix, String value) throws Exception {
+		if (flag) System.out.println(">>>>> " + prefix + ": " + value);
+		
+		Test07Object obj = (Test07Object) this.map07.get(prefix);
+		if (obj == null) {
+			throw new Exception("wrong data");
+		}
+		
+		this.stream.append(String.format("%-" + obj.getSize() + "s", value));
+		
+		//this.map07.put(prefix, Test07Object.builder().name(prefix).type("TN").size(size).sortNo(sortNo++).build());
+	}
+	
 	///////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
