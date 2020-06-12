@@ -19,6 +19,12 @@ repositories {
 }
 
 dependencies {
+/*
+groupId>com.fasterxml.jackson.dataformat</groupId>
+    <artifactId>jackson-dataformat-yaml</artifactId>
+    <version>2.9.8</version>
+*/
+	implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.8'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	//implementation 'org.springframework.boot:spring-boot-starter-security'

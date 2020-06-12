@@ -53,7 +53,8 @@
                 "number": "881111111",
                 "countryCode": "66"
             },
-            "idNumber": "idNumber"
+            "idNumber": "idNumber",
+            "number": [ 1, 2, 3 ]
         },
         "receiver": {
             "firstName": "BZIDWB",

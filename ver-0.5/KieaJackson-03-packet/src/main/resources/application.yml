@@ -46,8 +46,19 @@ spring:
 json:
   test:
     file: src/main/resources/json/test.json
+    file01: src/main/resources/json/test.json
+    file02: src/main/resources/json/test.json
+    file03: src/main/resources/json/test.json
+    file04: src/main/resources/json/test.json
+    file05: src/main/resources/json/test.json
+    file06: src/main/resources/json/test.json
+    file07: src/main/resources/json/test07.json
   packet:
     file: src/main/resources/table/table_packet.json
+
+yaml:
+  test:
+    file05: src/main/resources/json/test.yaml
 
 ##################################################
 ####################################################
