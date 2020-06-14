@@ -1,0 +1,19 @@
+[
+	{
+		"grpCode": "101",
+		"seqNo": 1,
+		"name": "firstName",
+		"size": 50,
+		"align": "LEFT",
+		"type": "STRING",
+		"description": "the first of Name"
+	}, {
+		"grpCode": "101",
+		"seqNo": 2,
+		"name": "lastName",
+		"size": 50,
+		"align": "LEFT",
+		"type": "STRING",
+		"description": "the last of Name"
+	}
+]

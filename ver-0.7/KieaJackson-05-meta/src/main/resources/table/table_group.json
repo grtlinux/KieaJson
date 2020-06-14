@@ -1,0 +1,85 @@
+[ {
+  "grpCode" : "101",
+  "grpName" : "auth.req",
+  "name" : "auth",
+  "type" : "req",
+  "description" : "the request of the auth data",
+  "content" : ""
+}, {
+  "grpCode" : "102",
+  "grpName" : "auth.res",
+  "name" : "auth",
+  "type" : "res",
+  "description" : "the response of the auth data",
+  "content" : ""
+}, {
+  "grpCode" : "201",
+  "grpName" : "detail.req",
+  "name" : "detail",
+  "type" : "req",
+  "description" : "the request of the detail data",
+  "content" : ""
+}, {
+  "grpCode" : "202",
+  "grpName" : "detail.res",
+  "name" : "detail",
+  "type" : "res",
+  "description" : "the response of the detail data",
+  "content" : ""
+}, {
+  "grpCode" : "301",
+  "grpName" : "validate.req",
+  "name" : "validate",
+  "type" : "req",
+  "description" : "the request of the validate data",
+  "content" : ""
+}, {
+  "grpCode" : "302",
+  "grpName" : "validate.res",
+  "name" : "validate",
+  "type" : "res",
+  "description" : "the response of the validate data",
+  "content" : ""
+}, {
+  "grpCode" : "401",
+  "grpName" : "commit.req",
+  "name" : "commit",
+  "type" : "req",
+  "description" : "the request of the commit data",
+  "content" : ""
+}, {
+  "grpCode" : "402",
+  "grpName" : "commit.res",
+  "name" : "commit",
+  "type" : "res",
+  "description" : "the response of the commit data",
+  "content" : ""
+}, {
+  "grpCode" : "501",
+  "grpName" : "list.req",
+  "name" : "list",
+  "type" : "req",
+  "description" : "the request of the list data",
+  "content" : ""
+}, {
+  "grpCode" : "502",
+  "grpName" : "list.res",
+  "name" : "list",
+  "type" : "res",
+  "description" : "the response of the list data",
+  "content" : ""
+}, {
+  "grpCode" : "601",
+  "grpName" : "callback.req",
+  "name" : "callback",
+  "type" : "req",
+  "description" : "the request of the callback data",
+  "content" : ""
+}, {
+  "grpCode" : "602",
+  "grpName" : "callback.res",
+  "name" : "callback",
+  "type" : "res",
+  "description" : "the response of the callback data",
+  "content" : ""
+} ]
