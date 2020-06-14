@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -539,6 +538,7 @@ public class KieaJackson03PacketApplication implements CommandLineRunner {
 			List<Object> lstValues = new ArrayList<>(this.map07.values());
 			for (int i=0; i < lstValues.size(); i++) {
 				Test07Object val = (Test07Object) lstValues.get(i);
+				if (flag) System.out.println(">>>>> " + val);
 			}
 			//List<Object> lstValues = this.map07.values().stream().collect(Collectors.toList());
 			for (Map.Entry<String, Object> entry : this.map07.entrySet()) {
