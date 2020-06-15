@@ -1,0 +1,757 @@
+[ {
+  "idx" : 0,
+  "fullName" : "/status",
+  "lastName" : "status",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 1,
+  "fullName" : "/message",
+  "lastName" : "message",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 2,
+  "fullName" : "/data.arrSize",
+  "lastName" : "data.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 3,
+  "fullName" : "/data/fee",
+  "lastName" : "fee",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 4,
+  "fullName" : "/data/deliveryMethod",
+  "lastName" : "deliveryMethod",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 5,
+  "fullName" : "/data/feeModel",
+  "lastName" : "feeModel",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 6,
+  "fullName" : "/data/feeCurrency",
+  "lastName" : "feeCurrency",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 7,
+  "fullName" : "/data/feeType",
+  "lastName" : "feeType",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 8,
+  "fullName" : "/data/sender/schema/$schema",
+  "lastName" : "$schema",
+  "size" : 40,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 9,
+  "fullName" : "/data/sender/schema/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 10,
+  "fullName" : "/data/sender/schema/properties/address/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 11,
+  "fullName" : "/data/sender/schema/properties/address/properties/city/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 12,
+  "fullName" : "/data/sender/schema/properties/address/properties/city/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 13,
+  "fullName" : "/data/sender/schema/properties/address/properties/countryCode/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 14,
+  "fullName" : "/data/sender/schema/properties/address/properties/countryCode/maxLength",
+  "lastName" : "maxLength",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 15,
+  "fullName" : "/data/sender/schema/properties/address/properties/countryCode/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 16,
+  "fullName" : "/data/sender/schema/properties/address/properties/line1/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 17,
+  "fullName" : "/data/sender/schema/properties/address/properties/line1/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 18,
+  "fullName" : "/data/sender/schema/properties/address/properties/line2/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 19,
+  "fullName" : "/data/sender/schema/properties/address/properties/line2/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 20,
+  "fullName" : "/data/sender/schema/properties/address/properties/line3/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 21,
+  "fullName" : "/data/sender/schema/properties/address/properties/line3/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 22,
+  "fullName" : "/data/sender/schema/properties/address/properties/postalCode/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 23,
+  "fullName" : "/data/sender/schema/properties/address/properties/postalCode/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 24,
+  "fullName" : "/data/sender/schema/properties/address/properties/state/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 25,
+  "fullName" : "/data/sender/schema/properties/address/properties/state/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 26,
+  "fullName" : "/data/sender/schema/properties/address/required.arrSize",
+  "lastName" : "required.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 31,
+  "fullName" : "/data/sender/schema/properties/address/required",
+  "lastName" : "required",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 32,
+  "fullName" : "/data/sender/schema/properties/address/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 33,
+  "fullName" : "/data/sender/schema/properties/dob/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 34,
+  "fullName" : "/data/sender/schema/properties/dob/format",
+  "lastName" : "format",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 35,
+  "fullName" : "/data/sender/schema/properties/dob/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 36,
+  "fullName" : "/data/sender/schema/properties/firstName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 37,
+  "fullName" : "/data/sender/schema/properties/firstName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 38,
+  "fullName" : "/data/sender/schema/properties/idExpirationDate/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 39,
+  "fullName" : "/data/sender/schema/properties/idExpirationDate/format",
+  "lastName" : "format",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 40,
+  "fullName" : "/data/sender/schema/properties/idExpirationDate/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 41,
+  "fullName" : "/data/sender/schema/properties/idIssueDate/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 42,
+  "fullName" : "/data/sender/schema/properties/idIssueDate/format",
+  "lastName" : "format",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 43,
+  "fullName" : "/data/sender/schema/properties/idIssueDate/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 44,
+  "fullName" : "/data/sender/schema/properties/idNumber/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 45,
+  "fullName" : "/data/sender/schema/properties/idNumber/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 46,
+  "fullName" : "/data/sender/schema/properties/lastName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 47,
+  "fullName" : "/data/sender/schema/properties/lastName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 48,
+  "fullName" : "/data/sender/schema/properties/middleName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 49,
+  "fullName" : "/data/sender/schema/properties/middleName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 50,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 51,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/properties/countryCode/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 52,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/properties/countryCode/maxLength",
+  "lastName" : "maxLength",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 53,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/properties/countryCode/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 54,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/properties/number/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 55,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/properties/number/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 56,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/required.arrSize",
+  "lastName" : "required.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 58,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/required",
+  "lastName" : "required",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 59,
+  "fullName" : "/data/sender/schema/properties/mobilePhone/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 60,
+  "fullName" : "/data/sender/schema/properties/namePrefix/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 61,
+  "fullName" : "/data/sender/schema/properties/namePrefix/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 62,
+  "fullName" : "/data/sender/schema/properties/purpose/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 63,
+  "fullName" : "/data/sender/schema/properties/purpose/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 64,
+  "fullName" : "/data/sender/schema/properties/secondLastName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 65,
+  "fullName" : "/data/sender/schema/properties/secondLastName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 66,
+  "fullName" : "/data/sender/schema/required.arrSize",
+  "lastName" : "required.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 75,
+  "fullName" : "/data/sender/schema/required",
+  "lastName" : "required",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 76,
+  "fullName" : "/data/sender/schema/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 77,
+  "fullName" : "/data/receiver/schema/$schema",
+  "lastName" : "$schema",
+  "size" : 40,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 78,
+  "fullName" : "/data/receiver/schema/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 79,
+  "fullName" : "/data/receiver/schema/properties/address/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 80,
+  "fullName" : "/data/receiver/schema/properties/address/properties/city/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 81,
+  "fullName" : "/data/receiver/schema/properties/address/properties/city/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 82,
+  "fullName" : "/data/receiver/schema/properties/address/properties/countryCode/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 83,
+  "fullName" : "/data/receiver/schema/properties/address/properties/countryCode/maxLength",
+  "lastName" : "maxLength",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 84,
+  "fullName" : "/data/receiver/schema/properties/address/properties/countryCode/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 85,
+  "fullName" : "/data/receiver/schema/properties/address/properties/line1/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 86,
+  "fullName" : "/data/receiver/schema/properties/address/properties/line1/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 87,
+  "fullName" : "/data/receiver/schema/properties/address/properties/line2/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 88,
+  "fullName" : "/data/receiver/schema/properties/address/properties/line2/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 89,
+  "fullName" : "/data/receiver/schema/properties/address/properties/line3/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 90,
+  "fullName" : "/data/receiver/schema/properties/address/properties/line3/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 91,
+  "fullName" : "/data/receiver/schema/properties/address/properties/postalCode/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 92,
+  "fullName" : "/data/receiver/schema/properties/address/properties/postalCode/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 93,
+  "fullName" : "/data/receiver/schema/properties/address/properties/state/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 94,
+  "fullName" : "/data/receiver/schema/properties/address/properties/state/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 95,
+  "fullName" : "/data/receiver/schema/properties/address/required.arrSize",
+  "lastName" : "required.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 100,
+  "fullName" : "/data/receiver/schema/properties/address/required",
+  "lastName" : "required",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 101,
+  "fullName" : "/data/receiver/schema/properties/address/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 102,
+  "fullName" : "/data/receiver/schema/properties/firstName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 103,
+  "fullName" : "/data/receiver/schema/properties/firstName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 104,
+  "fullName" : "/data/receiver/schema/properties/lastName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 105,
+  "fullName" : "/data/receiver/schema/properties/lastName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 106,
+  "fullName" : "/data/receiver/schema/properties/middleName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 107,
+  "fullName" : "/data/receiver/schema/properties/middleName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 108,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 109,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/properties/countryCode/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 110,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/properties/countryCode/maxLength",
+  "lastName" : "maxLength",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 111,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/properties/countryCode/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 112,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/properties/number/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 113,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/properties/number/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 114,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/required.arrSize",
+  "lastName" : "required.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 116,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/required",
+  "lastName" : "required",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 117,
+  "fullName" : "/data/receiver/schema/properties/mobilePhone/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 118,
+  "fullName" : "/data/receiver/schema/properties/namePrefix/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 119,
+  "fullName" : "/data/receiver/schema/properties/namePrefix/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 120,
+  "fullName" : "/data/receiver/schema/properties/required.arrSize",
+  "lastName" : "required.arrSize",
+  "size" : 4,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 124,
+  "fullName" : "/data/receiver/schema/properties/required",
+  "lastName" : "required",
+  "size" : 20,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 125,
+  "fullName" : "/data/receiver/schema/properties/secondLastName/description",
+  "lastName" : "description",
+  "size" : 80,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 126,
+  "fullName" : "/data/receiver/schema/properties/secondLastName/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 127,
+  "fullName" : "/data/receiver/schema/type",
+  "lastName" : "type",
+  "size" : 10,
+  "srcValue" : "",
+  "tgtValue" : ""
+}, {
+  "idx" : 128,
+  "fullName" : "/data/metadata",
+  "lastName" : "metadata",
+  "size" : 0,
+  "srcValue" : "",
+  "tgtValue" : ""
+} ]

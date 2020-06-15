@@ -64,6 +64,10 @@ json:
     out:
       file: src/main/resources/table/table_meta.json
   
+  field-info:
+    out:
+      file: src/main/resources/table/table_field_info.json
+      
   data:
     file101: src/main/resources/json/auth_req.json
     file102: src/main/resources/json/auth_res.json

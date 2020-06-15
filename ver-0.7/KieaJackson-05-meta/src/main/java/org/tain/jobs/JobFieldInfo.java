@@ -1,13 +1,12 @@
 package org.tain.jobs;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.tain.domain.FieldInfo;
 import org.tain.domain.Meta;
-import org.tain.object.FieldObject;
 import org.tain.utils.CurrentInfo;
 import org.tain.utils.Flag;
 
@@ -18,25 +17,28 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class JobJsonData {
+public class JobFieldInfo {
 
 	private Map<String, Meta> mapMeta2;
 	private String jsonDataFile;
 	
 	private int idx = -1;
-	private List<FieldObject> lstField;
+	//private List<FieldInfo> lstField;
+	private Map<String, FieldInfo> mapField;
 
-	public JobJsonData(Map<String, Meta> mapMeta2, String jsonDataFile) {
+	public JobFieldInfo(Map<String, Meta> mapMeta2, String jsonDataFile) {
 		this.mapMeta2 = mapMeta2;
 		this.jsonDataFile = jsonDataFile;
 		
-		this.lstField = new ArrayList<>();
+		//this.lstField = new ArrayList<>();
+		this.mapField = new LinkedHashMap<>();
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////
-
-	public List<FieldObject> get() throws Exception {
+	
+	//public List<FieldInfo> get() throws Exception {
+	public Map<String, FieldInfo> get() throws Exception {
 		log.info("KANG-20200614 >>>>> {} {}", CurrentInfo.get(), this.jsonDataFile);
 
 		if (Flag.flag) {
@@ -47,10 +49,11 @@ public class JobJsonData {
 			_parsing(prefix, jsonNode);
 		}
 		
-		return this.lstField;
+		return this.mapField;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
+	
 	private void _parsing(String prefix, JsonNode jsonNode) throws Exception {
 		if (jsonNode.isArray()) {
 			ArrayNode arrayNode = (ArrayNode) jsonNode;
@@ -87,7 +90,7 @@ public class JobJsonData {
 		if (index >= 0) {
 			lastName = lastName.substring(index + 1);
 		}
-		
+
 		Meta meta = this.mapMeta2.get(lastName);
 		if (meta == null) {
 			throw new Exception("ERROR: worng json data file");
@@ -95,12 +98,10 @@ public class JobJsonData {
 		
 		int size = meta.getSize();
 		
-		String srcValue = String.format("%s", value);
+		String srcValue = "";
 		String tgtValue = "";
-		if (size > 0)
-			tgtValue = String.format("%-" + size + "s", value);
 		
-		this.lstField.add(FieldObject.builder()
+		this.mapField.put(fullName, FieldInfo.builder()
 				.idx(this.idx)
 				.fullName(fullName)
 				.lastName(lastName)
@@ -108,6 +109,9 @@ public class JobJsonData {
 				.srcValue(srcValue)
 				.tgtValue(tgtValue)
 				.build());
+		
 		this.idx ++;
 	}
+	
+	///////////////////////////////////////////////////////////////////////////
 }

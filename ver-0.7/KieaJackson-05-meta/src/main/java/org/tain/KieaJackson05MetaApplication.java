@@ -12,13 +12,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.tain.domain.FieldInfo;
 import org.tain.domain.Group;
 import org.tain.domain.Meta;
+import org.tain.jobs.JobFieldInfo;
 import org.tain.jobs.JobJsonData;
 import org.tain.jobs.JobMetaInfo;
 import org.tain.object.FieldObject;
 import org.tain.object.GroupObject;
 import org.tain.object.MetaObject;
+import org.tain.repository.FieldInfoRepository;
 import org.tain.repository.GroupRepository;
 import org.tain.repository.MetaRepository;
 import org.tain.utils.CurrentInfo;
@@ -50,6 +53,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		if (Flag.flag) test03();
 		if (Flag.flag) test04();
 		if (Flag.flag) test05();
+		if (Flag.flag) test06();
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -296,7 +300,80 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 				}
 				if (Flag.flag) System.out.printf(">>>>> result = [%s]%n", result);
 				
-				this.sampleStream = result;
+				//this.sampleStream = result;
+			}
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	@Autowired
+	private FieldInfoRepository fieldInfoRepository;
+	
+	private List<FieldInfo> lstFieldInfo = null;
+	private Map<String, FieldInfo> mapFieldInfo = null;
+
+	@Value("${json.field-info.out.file}")
+	private String jsonFieldInfoOutFile;
+
+	/**
+	 * get field info and insert this into table
+	 * 
+	 * @throws Exception
+	 */
+	private void test05() throws Exception {
+		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
+		
+		if (Flag.flag) {
+			log.info("KANG-20200614 >>>>> {}", this.jsonDataFile202);
+			
+			if (this.mapFieldInfo != null) this.mapFieldInfo.clear();
+			this.mapFieldInfo = new JobFieldInfo(this.mapMeta2, this.jsonDataFile202).get();
+			if (Flag.flag) {
+				// insert into table
+				for (Map.Entry<String, FieldInfo> field : this.mapFieldInfo.entrySet()) {
+					this.fieldInfoRepository.save(field.getValue());
+					if (Flag.flag) System.out.println(">>>>> fld = " + field.getValue());
+				}
+			}
+			
+			if (Flag.flag) {
+				// select from table and make json file
+				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
+				this.lstFieldInfo = this.fieldInfoRepository.findAll();
+				
+				// String strJson = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(this.lstFieldInfo);
+				if (Flag.flag) {
+					ObjectMapper objectMapper = new ObjectMapper();
+					ObjectWriter writer = objectMapper.writer(new DefaultPrettyPrinter());
+					writer.writeValue(Paths.get(this.jsonFieldInfoOutFile).toFile(), this.lstFieldInfo);
+				}
+			}
+			
+			if (Flag.flag) {
+				// select from table
+				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
+				if (this.mapFieldInfo != null) this.mapFieldInfo.clear();
+				this.lstFieldInfo = this.fieldInfoRepository.findAll();
+				for (FieldInfo field : this.lstFieldInfo) {
+					this.mapFieldInfo.put(field.getFullName(), field);
+				}
+			}
+			
+			if (!Flag.flag) {
+				/*
+				// concat
+				String result = "";
+				for (FieldInfo fld : lstField) {
+					if (!Flag.flag) System.out.printf(">>>>> tgtValue = [%s]%n", fld.getTgtValue());
+					result += fld.getTgtValue();
+				}
+				if (Flag.flag) System.out.printf(">>>>> result = [%s]%n", result);
+				
+				//this.sampleStream = result;
+				*/
 			}
 		}
 	}
@@ -307,11 +384,14 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	
 	private String sampleStream = null;
 	
-	private void test05() throws Exception {
+	private void test06() throws Exception {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
-		if (Flag.flag) {
-			System.out.printf(">>>>> stream(%d): [%s]%n", this.sampleStream.length(), this.sampleStream);
+		if (!Flag.flag) {
+			// Ready to transfer from stream to JSON
+			if (Flag.flag) System.out.printf(">>>>> stream(%d): [%s]%n", this.sampleStream.length(), this.sampleStream);
+			
+			
 		}
 	}
 	
