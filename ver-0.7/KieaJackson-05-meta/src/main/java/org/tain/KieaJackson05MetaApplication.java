@@ -414,15 +414,10 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 				if (Flag.flag) System.out.printf(">>>>> sampleStream(%d) = [%s]%n", this.sampleStream.length(), this.sampleStream);
 			}
 			
-			// TODO: recursive logic
 			if (Flag.flag) {
 				//this.index = 0;
 				this.offset = 0;
 				_analStream("", 0);
-				//for (int i=0; i < this.lstFieldInfo.size(); i++) {
-				//	FieldInfo fieldInfo = this.lstFieldInfo.get(i);
-				//	if (Flag.flag) System.out.println(">>>>> fieldInfo: " + fieldInfo);
-				//}
 			}
 			
 			// read data file
@@ -438,6 +433,52 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 
+	//
+	// TODO: have to do your best
+	//     have to learn by heart
+	//
+	private void jsonToYaml(JsonNode jsonNode, StringBuilder yaml, int depth) {
+		if (jsonNode.isArray()) {
+			for (JsonNode arrayItem: jsonNode) {
+				appendNodeToYaml(arrayItem, yaml, depth, true);
+			}
+		} else if (jsonNode.isObject()) {
+			appendNodeToYaml(jsonNode, yaml, depth, false);
+		} else if (jsonNode.isValueNode()) {
+			yaml.append(jsonNode.asText());
+		} else {
+			yaml.append(jsonNode.asText());
+		}
+	}
+	
+	private void appendNodeToYaml(JsonNode jsonNode, StringBuilder yaml, int depth, boolean isArray) {
+		Iterator<Map.Entry<String, JsonNode>> fields = jsonNode.fields();
+		boolean isFirst = true;
+		while (fields.hasNext()) {
+			Map.Entry<String, JsonNode> node = fields.next();
+			addFieldNameToYaml(yaml, node.getKey(), depth, isArray && isFirst);
+			jsonToYaml(node.getValue(), yaml, depth+1);
+			isFirst = false;
+		}
+	}
+	
+	private void addFieldNameToYaml(StringBuilder yaml, String fieldName, int depth, boolean isFirstInArray) {
+		if (yaml.length() > 0) {
+			yaml.append("\n");
+			int requiredDepth = (isFirstInArray) ? depth-1 : depth;
+			for (int i=0; i < requiredDepth; i++) {
+				yaml.append("  ");
+			}
+			if (isFirstInArray) {
+				yaml.append("- ");
+			}
+		}
+		yaml.append(fieldName);
+		yaml.append(": ");
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+
 	//private int index = -1;
 	
 	private int _analStream(String prefix, int index) {
@@ -448,8 +489,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			
 			if (fieldInfo.getLastName().contains(".arrSize")) {
 				// array
-				String value = getFieldValue(fieldInfo);
-				int arrSize = Integer.valueOf(value.trim());
+				int arrSize = Integer.valueOf(_getFieldValue(fieldInfo).trim());
 				index ++;
 				
 				// make prefix for compare
@@ -469,7 +509,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 				}
 				// if not prefix and return
 				
-				String value = getFieldValue(fieldInfo);
+				String value = _getFieldValue(fieldInfo);
 				if (Flag.flag) System.out.printf(">>>>> [%s] <- [%s]%n", value, fieldInfo);
 				
 				index ++;
@@ -481,7 +521,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	
 	private int offset = -1;
 	
-	private String getFieldValue(FieldInfo fieldInfo) {
+	private String _getFieldValue(FieldInfo fieldInfo) {
 		String ret = this.sampleStream.substring(offset, offset + fieldInfo.getSize());
 		this.offset += fieldInfo.getSize();
 		return ret;
