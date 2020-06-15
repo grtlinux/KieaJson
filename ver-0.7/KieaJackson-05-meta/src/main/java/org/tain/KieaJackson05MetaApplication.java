@@ -3,6 +3,7 @@ package org.tain;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,8 +31,10 @@ import org.tain.utils.PrintObject;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -361,21 +364,181 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 					this.mapFieldInfo.put(field.getFullName(), field);
 				}
 			}
+		}
+		
+		if (Flag.flag) {
+			// select from table and create map
+			if (Flag.flag) {
+				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
+				if (this.mapFieldInfo != null) this.mapFieldInfo.clear();
+				this.lstFieldInfo = this.fieldInfoRepository.findAll();
+				this.lstFieldInfo.forEach(field -> {
+					this.mapFieldInfo.put(field.getFullName(), field);
+				});
+			}
 			
-			if (!Flag.flag) {
-				/*
+			// read data file
+			if (Flag.flag) {
+				// parsing the json data file
+				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
+				JsonNode jsonNode = new ObjectMapper().readValue(new File(this.jsonDataFile202), JsonNode.class);
+				String prefix = "";
+				_parsing05(prefix, jsonNode);
+			}
+			
+			if (Flag.flag) {
 				// concat
 				String result = "";
-				for (FieldInfo fld : lstField) {
+				for (FieldInfo fld : this.lstFieldInfo) {
 					if (!Flag.flag) System.out.printf(">>>>> tgtValue = [%s]%n", fld.getTgtValue());
 					result += fld.getTgtValue();
 				}
-				if (Flag.flag) System.out.printf(">>>>> result = [%s]%n", result);
+				if (Flag.flag) System.out.printf(">>>>> result(%d) = [%s]%n", result.length(), result);
 				
-				//this.sampleStream = result;
-				*/
+				this.sampleStream = result;
 			}
 		}
+		
+		if (Flag.flag) {
+			// select from table and create map
+			if (Flag.flag) {
+				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
+				if (this.mapFieldInfo != null) this.mapFieldInfo.clear();
+				this.lstFieldInfo = this.fieldInfoRepository.findAll();
+				this.lstFieldInfo.forEach(field -> {
+					this.mapFieldInfo.put(field.getFullName(), field);
+				});
+			}
+			
+			if (Flag.flag) {
+				if (Flag.flag) System.out.printf(">>>>> sampleStream(%d) = [%s]%n", this.sampleStream.length(), this.sampleStream);
+			}
+			
+			// TODO: recursive logic
+			if (Flag.flag) {
+				//this.index = 0;
+				this.offset = 0;
+				_analStream("", 0);
+				//for (int i=0; i < this.lstFieldInfo.size(); i++) {
+				//	FieldInfo fieldInfo = this.lstFieldInfo.get(i);
+				//	if (Flag.flag) System.out.println(">>>>> fieldInfo: " + fieldInfo);
+				//}
+			}
+			
+			// read data file
+			//if (!Flag.flag) {
+			//	// parsing the json data file
+			//	if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
+			//	JsonNode jsonNode = new ObjectMapper().readValue(new File(this.jsonDataFile202), JsonNode.class);
+			//	String prefix = "";
+			//	_parsing05(prefix, jsonNode);
+			//}
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	//private int index = -1;
+	
+	private int _analStream(String prefix, int index) {
+		while (index < this.lstFieldInfo.size()) {
+			
+			FieldInfo fieldInfo = this.lstFieldInfo.get(index);
+			if (!Flag.flag) System.out.println(">>>>> " + fieldInfo);
+			
+			if (fieldInfo.getLastName().contains(".arrSize")) {
+				// array
+				String value = getFieldValue(fieldInfo);
+				int arrSize = Integer.valueOf(value.trim());
+				index ++;
+				
+				// make prefix for compare
+				String fullName = fieldInfo.getFullName();
+				String _prefix = fullName.substring(0, fullName.length() - 8);
+				
+				int ret = -1;
+				for (int i=0; i < arrSize; i++) {
+					ret = _analStream(_prefix, index);
+				}
+				index = ret;
+			} else {
+				// not array
+				String fullName = fieldInfo.getFullName();
+				if (fullName.indexOf(prefix) != 0) {
+					return index;
+				}
+				// if not prefix and return
+				
+				String value = getFieldValue(fieldInfo);
+				if (Flag.flag) System.out.printf(">>>>> [%s] <- [%s]%n", value, fieldInfo);
+				
+				index ++;
+			}
+		}
+		
+		return index;
+	}
+	
+	private int offset = -1;
+	
+	private String getFieldValue(FieldInfo fieldInfo) {
+		String ret = this.sampleStream.substring(offset, offset + fieldInfo.getSize());
+		this.offset += fieldInfo.getSize();
+		return ret;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	private void _parsing05(String prefix, JsonNode jsonNode) throws Exception {
+		if (jsonNode.isArray()) {
+			ArrayNode arrayNode = (ArrayNode) jsonNode;
+			_processing05(prefix + ".arrSize", String.valueOf(arrayNode.size()));
+			
+			Iterator<JsonNode> node = arrayNode.elements();
+			while (node.hasNext()) {
+				String _prefix = prefix;
+				JsonNode _jsonNode = node.next();
+				_parsing05(_prefix, _jsonNode);
+			}
+		} else if (jsonNode.isObject()) {
+			jsonNode.fields().forEachRemaining(entry -> {
+				String _prefix = prefix + "/" + entry.getKey();
+				try {
+					_parsing05(_prefix, entry.getValue());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+		} else if (jsonNode.isValueNode()) {
+			_processing05(prefix, jsonNode.asText(""));
+		} else {
+			throw new Exception("ERROR: wrong json data...");
+		}
+	}
+	
+	private void _processing05(String prefix, String value) throws Exception {
+		if (!Flag.flag) log.info("KANG-20200614 >>>>> {} = {}", prefix, value);
+		
+		FieldInfo fieldInfo = this.mapFieldInfo.get(prefix);
+
+		int size = fieldInfo.getSize();
+		
+		String srcValue = String.format("%s", value);
+		String tgtValue = "";
+		if (size > 0)
+			tgtValue = String.format("%-" + size + "s", value);
+		
+		fieldInfo.setSrcValue(srcValue);
+		fieldInfo.setTgtValue(tgtValue);
+		
+		this.lstFieldInfo.add(FieldInfo.builder()
+				.idx(fieldInfo.getIdx())
+				.fullName(fieldInfo.getFullName())
+				.lastName(fieldInfo.getLastName())
+				.size(fieldInfo.getSize())
+				.srcValue(srcValue)
+				.tgtValue(tgtValue)
+				.build());
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
