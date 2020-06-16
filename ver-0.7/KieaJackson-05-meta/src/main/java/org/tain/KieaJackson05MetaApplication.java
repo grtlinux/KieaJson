@@ -60,7 +60,8 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		if (!Flag.flag) test03();
 		if (!Flag.flag) test04();
 		if (!Flag.flag) test05();
-		if (Flag.flag) test06();
+		if (!Flag.flag) test06();
+		if (Flag.flag) test07();
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -650,7 +651,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	private void test06() throws Exception {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
-		if (Flag.flag) {
+		if (!Flag.flag) {
 			/*
 			 * JsonNode objectMapper.readTree(strJson);
 			 * Clazz objectMapper.readValue(strJson, Clazz.class);
@@ -691,11 +692,75 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			StringBuffer stringBuffer = stringWriter.getBuffer();
 			if (Flag.flag) System.out.println(">>>>> StringBuffer: " + stringBuffer.toString());
 		}
+		
+		if (Flag.flag) {
+			//
+			StringWriter stringWriter = new StringWriter();  // wrapper of StringBuffer
+			JsonGenerator jsonGenerator = new JsonFactory().createGenerator(stringWriter);
+			jsonGenerator.setPrettyPrinter(new DefaultPrettyPrinter());
+
+			jsonGenerator.writeStartObject();
+			
+				jsonGenerator.writeStringField("status", "success");
+				jsonGenerator.writeStringField("message", "OK");
+	
+				jsonGenerator.writeArrayFieldStart("data");
+				
+					jsonGenerator.writeStartObject();
+						jsonGenerator.writeStringField("fee", "2.2000");
+						jsonGenerator.writeStringField("deliveryMethod", "cash");
+						
+						jsonGenerator.writeObjectFieldStart("sender");
+							jsonGenerator.writeStringField("city", "Seoul");
+							jsonGenerator.writeStringField("country", "Korea");
+							
+							jsonGenerator.writeArrayFieldStart("required");
+								jsonGenerator.writeString("Hello");
+								jsonGenerator.writeString("World");
+								jsonGenerator.writeString("Bye");
+							jsonGenerator.writeEndArray();
+							
+							jsonGenerator.writeStringField("type", "object");
+						jsonGenerator.writeEndObject();
+						
+					jsonGenerator.writeEndObject();
+					
+				jsonGenerator.writeEndArray();
+			
+			jsonGenerator.writeEndObject();
+			jsonGenerator.close();
+			
+			
+			/*
+			jsonGenerator.writeObjectFieldStart("name");  // name: {
+			jsonGenerator.writeStringField("first", "StreamAPIFirst");
+			jsonGenerator.writeStringField("last", "Sixpack");  // last: Sixpack
+			jsonGenerator.writeEndObject();  // }  - name
+			jsonGenerator.writeStringField("gender", "MALE");
+			jsonGenerator.writeBooleanField("verified", false);
+			jsonGenerator.writeFieldName("userImage");
+			jsonGenerator.writeStartArray();
+			jsonGenerator.writeString("Hello");
+			jsonGenerator.writeString("World");
+			jsonGenerator.writeString("Bye");
+			jsonGenerator.writeEndArray();
+			jsonGenerator.writeEndObject();  // }
+			jsonGenerator.close();  // close -> output.flush
+			*/
+			
+			if (Flag.flag) System.out.println(">>>>> StringWriter: " + stringWriter.toString());
+		}
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
+	
+	private void test07() throws Exception {
+		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
+		
+	}
+	
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
