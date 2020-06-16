@@ -490,7 +490,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	//
-	// TODO: have to do your best
+	// TO DO: have to do your best -> the below
 	//     have to learn by heart
 	//
 	private void jsonToYaml(JsonNode jsonNode, StringBuilder yaml, int depth) {
@@ -950,7 +950,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////
-	
+	// TODO: have to kill the bug
 	private void _jsonToYaml07(JsonNode jsonNode, StringBuffer yaml, int depth) {
 		if (jsonNode.isArray()) {
 			for (JsonNode arrItem : jsonNode) {
