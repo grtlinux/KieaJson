@@ -1,7 +1,7 @@
 package org.tain;
 
 import java.io.File;
-import java.io.OutputStream;
+import java.io.StringWriter;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,6 +32,7 @@ import org.tain.utils.PrintObject;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -109,6 +110,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
 		if (Flag.flag) {
+			// group: jsonfile -> list -> table
 			// create table from json file and insert data into group table
 			ObjectMapper objectMapper = new ObjectMapper();
 			List<GroupObject> list = objectMapper.readValue(new File(this.jsonGroupOutFile), new TypeReference<List<GroupObject>>() {});
@@ -127,12 +129,14 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		/////////////////////////////////////////////////////////////////////////
 		
 		if (Flag.flag) {
+			// meta: alljsondatafiles -> map
 			// get map of MetaInfo
 			this.mapMeta1 = new JobMetaInfo(this.jsonMetaPath).get();
 			if (!Flag.flag) PrintObject.printMetaObject(this.mapMeta1);
 		}
 		
 		if (Flag.flag) {
+			// meta: map -> list -> table -> jsonfile
 			// create table and insert into table
 			List<MetaObject> list = new ArrayList<>(this.mapMeta1.values());
 			for (MetaObject meta : list) {
@@ -143,7 +147,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			if (Flag.flag) {
 				ObjectMapper objectMapper = new ObjectMapper();
 				ObjectWriter writer = objectMapper.writer(new DefaultPrettyPrinter());
-				writer.writeValue(Paths.get(jsonMetaOutFile).toFile(), list);
+				writer.writeValue(Paths.get(this.jsonMetaOutFile).toFile(), list);
 			}
 		}
 	}
@@ -161,6 +165,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
 		if (Flag.flag) {
+			// group: select -> list -> jsonfile
 			// select from table
 			List<GroupObject> lstObject = new ArrayList<>();
 			List<Group> list = this.groupRepository.findAll();
@@ -184,6 +189,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		/////////////////////////////////////////////////////////////////////////
 
 		if (Flag.flag) {
+			// map: select -> list -> jsonfile
 			// select from table
 			List<MetaObject> lstObject = new ArrayList<>();
 			List<Meta> list = this.metaRepository.findAll();
@@ -214,6 +220,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
 		if (Flag.flag) {
+			// group: select -> list -> map
 			// select from table
 			this.mapGroup2 = new LinkedHashMap<>();
 			List<Group> list = this.groupRepository.findAll();
@@ -227,6 +234,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		/////////////////////////////////////////////////////////////////////////
 
 		if (Flag.flag) {
+			// meta: select -> list -> map
 			// select from table
 			this.mapMeta2 = new LinkedHashMap<>();
 			List<Meta> list = this.metaRepository.findAll();
@@ -263,6 +271,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
 		if (Flag.flag) {
+			// src/main/resources/json/auth_req.json -> list of field
 			log.info("KANG-20200614 >>>>> {}", this.jsonDataFile101);
 			
 			List<FieldObject> lstField = new JobJsonData(this.mapMeta2, this.jsonDataFile101).get();
@@ -279,6 +288,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		}
 		
 		if (Flag.flag) {
+			// src/main/resources/json/auth_res.json -> list of field
 			log.info("KANG-20200614 >>>>> {}", this.jsonDataFile102);
 			
 			List<FieldObject> lstField = new JobJsonData(this.mapMeta2, this.jsonDataFile102).get();
@@ -294,6 +304,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		}
 		
 		if (Flag.flag) {
+			// src/main/resources/json/detail_res.json -> list of field
 			log.info("KANG-20200614 >>>>> {}", this.jsonDataFile202);
 			
 			List<FieldObject> lstField = new JobJsonData(this.mapMeta2, this.jsonDataFile202).get();
@@ -333,6 +344,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
 		if (Flag.flag) {
+			// Fields of 202: json -> table -> select -> jsonfile
 			log.info("KANG-20200614 >>>>> {}", this.jsonDataFile202);
 			
 			if (this.mapFieldInfo != null) this.mapFieldInfo.clear();
@@ -359,6 +371,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			}
 			
 			if (Flag.flag) {
+				// field: select -> map
 				// select from table
 				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
 				if (this.mapFieldInfo != null) this.mapFieldInfo.clear();
@@ -370,6 +383,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		}
 		
 		if (Flag.flag) {
+			// field: select -> map
 			// select from table and create map
 			if (Flag.flag) {
 				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
@@ -382,6 +396,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			
 			// read data file
 			if (Flag.flag) {
+				// data202: jsonfile -> map
 				// parsing the json data file
 				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
 				JsonNode jsonNode = new ObjectMapper().readValue(new File(this.jsonDataFile202), JsonNode.class);
@@ -390,7 +405,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			}
 			
 			if (Flag.flag) {
-				// concat
+				// data202: concatenate the fields
 				String result = "";
 				for (FieldInfo fld : this.lstFieldInfo) {
 					if (!Flag.flag) System.out.printf(">>>>> tgtValue = [%s]%n", fld.getTgtValue());
@@ -403,6 +418,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 		}
 		
 		if (Flag.flag) {
+			// field: select -> list
 			// select from table and create map
 			if (Flag.flag) {
 				if (this.lstFieldInfo != null) this.lstFieldInfo.clear();
@@ -420,7 +436,7 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			if (Flag.flag) {
 				//this.index = 0;
 				this.offset = 0;
-				_analStream("", 0);
+				_analStream("", 0);  // stream to split into subfield
 			}
 			
 			// read data file
@@ -431,6 +447,42 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			//	String prefix = "";
 			//	_parsing05(prefix, jsonNode);
 			//}
+		}
+		
+		if (Flag.flag) {
+			// JsonParser test
+			/*
+				{
+				  "id" : 1,
+				  "name" : "Arvind",
+				  "address" : {
+				    "village" : "Dhananjaypur",
+				    "district" : "Varanasi",
+				    "state" : "UP"
+				  }
+				} 
+			*/
+			String strJson = "";
+			
+			JsonFactory jsonFactory = new JsonFactory();
+			JsonParser jsonParser = jsonFactory.createParser(strJson);
+			jsonParser.setCodec(new ObjectMapper());
+			JsonNode jsonNode = jsonParser.readValueAsTree();
+			_readJsonData(jsonNode);
+		}
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	private void _readJsonData(JsonNode jsonNode) {
+		Iterator<Map.Entry<String, JsonNode>> iter = jsonNode.fields();
+		while (iter.hasNext()) {
+			Map.Entry<String, JsonNode> entry = iter.next();
+			if (entry.getValue().isObject()) {
+				_readJsonData(entry.getValue());
+			} else {
+				System.out.printf(">>>> [%s:%s]%n", entry.getKey(), entry.getValue());
+			}
 		}
 	}
 	
@@ -604,9 +656,19 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			 * Clazz objectMapper.readValue(strJson, Clazz.class);
 			 */
 			JsonFactory jsonFactory = new JsonFactory();
-			OutputStream outputStream = System.out;
-			@SuppressWarnings("deprecation")
-			JsonGenerator jsonGenerator = jsonFactory.createJsonGenerator(outputStream);
+
+			//OutputStream outputStream = System.out;
+			//@SuppressWarnings("deprecation")
+			//JsonGenerator jsonGenerator = jsonFactory.createJsonGenerator(outputStream);
+			
+			StringWriter stringWriter = new StringWriter();  // wrapper of StringBuffer
+			JsonGenerator jsonGenerator = jsonFactory.createGenerator(stringWriter);
+			jsonGenerator.setPrettyPrinter(new DefaultPrettyPrinter());
+
+			//StringBuilder stringBuilder = new StringBuilder();
+			//JsonGenerator jsonGenerator = jsonFactory.createGenerator(CharStreams.asWriter(stringBuilder));
+			//jsonGenerator.setPrettyPrinter(ObjectMapper.getPrettyPrinter());
+			
 			
 			jsonGenerator.writeStartObject();  // {
 			jsonGenerator.writeObjectFieldStart("name");  // name: {
@@ -616,13 +678,18 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 			jsonGenerator.writeStringField("gender", "MALE");
 			jsonGenerator.writeBooleanField("verified", false);
 			jsonGenerator.writeFieldName("userImage");
+			jsonGenerator.writeStartArray();
+			jsonGenerator.writeString("Hello");
+			jsonGenerator.writeString("World");
+			jsonGenerator.writeString("Bye");
+			jsonGenerator.writeEndArray();
 			jsonGenerator.writeEndObject();  // }
 			jsonGenerator.close();  // close -> output.flush
 			
-			// Ready to transfer from stream to JSON
-			if (Flag.flag) System.out.printf(">>>>> stream(%d): [%s]%n", this.sampleStream.length(), this.sampleStream);
+			if (Flag.flag) System.out.println(">>>>> StringWriter: " + stringWriter.toString());
 			
-			
+			StringBuffer stringBuffer = stringWriter.getBuffer();
+			if (Flag.flag) System.out.println(">>>>> StringBuffer: " + stringBuffer.toString());
 		}
 	}
 	

@@ -74,14 +74,14 @@ public class JobMetaInfo {
 					}
 				}
 			}
-		}
-		
-		if (!Flag.flag) {
-			// print map
-			for (Map.Entry<String, MetaObject> entry : this.map.entrySet()) {
-				String key = entry.getKey();
-				MetaObject obj = (MetaObject) entry.getValue();
-				System.out.printf(">>>>> %s = %s%n", key, obj);
+			
+			if (!Flag.flag) {
+				// print map
+				for (Map.Entry<String, MetaObject> entry : this.map.entrySet()) {
+					String key = entry.getKey();
+					MetaObject obj = (MetaObject) entry.getValue();
+					System.out.printf(">>>>> %s = %s%n", key, obj);
+				}
 			}
 		}
 		
