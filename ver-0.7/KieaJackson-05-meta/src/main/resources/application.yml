@@ -81,6 +81,7 @@ yaml:
     file03: src/main/resources/json/test03.yaml
 
 
+
 ########################################################
 ########################################################
 spring.profiles.active: local-http

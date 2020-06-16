@@ -755,12 +755,335 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
+
+	@Value("${json.group.out.file}")
+	private String jsonGroupOutFile07;
+	
+	@Value("${json.meta.out.file}")
+	private String jsonMetaOutFile07;
+	
+	@Value("${json.field-info.out.file}")
+	private String jsonFieldInfoOutFile07;
+	
+	@Autowired
+	private GroupRepository groupRepository07;
+	private List<Group> lstGroup07 = new ArrayList<>();
+	private Map<String, Group> mapGroup07 = new LinkedHashMap<>();
+
+	@Autowired
+	private MetaRepository metaRepository07;
+	private List<Meta> lstMeta07 = new ArrayList<>();
+	private Map<String, Meta> mapMeta07 = new LinkedHashMap<>();
+
+	@Autowired
+	private FieldInfoRepository fieldInfoRepository07;
+	private List<FieldInfo> lstFieldInfo07 = new ArrayList<>();
+	private Map<String, FieldInfo> mapFieldInfo07 = new LinkedHashMap<>();
+
+	private StringBuffer sbStream202 = new StringBuffer();
 	
 	private void test07() throws Exception {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
+		if (Flag.flag) {
+			// jsonfile -> table
+			
+			if (Flag.flag) {
+				// group
+				if (this.lstGroup07 != null) this.lstGroup07.clear();
+
+				this.lstGroup07 = new ObjectMapper().readValue(new File(this.jsonGroupOutFile07), new TypeReference<List<Group>>() {});
+				this.lstGroup07.forEach(entry -> {
+					this.groupRepository07.save(entry);
+				});
+			}
+			
+			if (Flag.flag) {
+				// meta
+				if (this.lstMeta07 != null) this.lstMeta07.clear();
+
+				this.lstMeta07 = new ObjectMapper().readValue(new File(this.jsonMetaOutFile07), new TypeReference<List<Meta>>() {});
+				this.lstMeta07.forEach(entry -> {
+					this.metaRepository07.save(entry);
+				});
+			}
+			
+			if (Flag.flag) {
+				// field-info
+				if (this.lstFieldInfo07 != null) this.lstFieldInfo07.clear();
+
+				this.lstFieldInfo07 = new ObjectMapper().readValue(new File(this.jsonFieldInfoOutFile07), new TypeReference<List<FieldInfo>>() {});
+				this.lstFieldInfo07.forEach(entry -> {
+					this.fieldInfoRepository07.save(entry);
+				});
+			}
+		}
+		
+		if (Flag.flag) {
+			// table -> list -> map
+			
+			if (Flag.flag) {
+				// group
+				if (this.lstGroup07 != null) this.lstGroup07.clear();
+				if (this.mapGroup07 != null) this.mapGroup07.clear();
+				
+				this.lstGroup07 = this.groupRepository07.findAll();
+				this.lstGroup07.forEach(entry -> {
+					this.mapGroup07.put(entry.getGrpCode(), entry);
+				});
+				
+				if (this.lstGroup07 != null) this.lstGroup07.clear();
+			}
+			
+			if (Flag.flag) {
+				// meta
+				if (this.lstMeta07 != null) this.lstMeta07.clear();
+				if (this.mapMeta07 != null) this.mapMeta07.clear();
+				
+				this.lstMeta07 = this.metaRepository07.findAll();
+				this.lstMeta07.forEach(entry -> {
+					this.mapMeta07.put(entry.getName(), entry);
+				});
+				
+				if (this.lstMeta07 != null) this.lstMeta07.clear();
+			}
+			
+			if (Flag.flag) {
+				// field-info
+				if (this.lstFieldInfo07 != null) this.lstFieldInfo07.clear();
+				if (this.mapFieldInfo07 != null) this.mapFieldInfo07.clear();
+				
+				this.lstFieldInfo07 = this.fieldInfoRepository07.findAll();
+				this.lstFieldInfo07.forEach(entry -> {
+					this.mapFieldInfo07.put(entry.getFullName(), entry);
+				});
+				
+				if (this.lstFieldInfo07 != null) this.lstFieldInfo07.clear();
+			}
+		}
+		
+		if (!Flag.flag) {
+			// print
+			
+			if (Flag.flag) {
+				// group
+				this.mapGroup07.forEach((key, value) -> {
+					System.out.printf(">>>>> [%s] => %s%n", key, value);
+				});
+			}
+			
+			if (Flag.flag) {
+				// meta
+				this.mapMeta07.forEach((key, value) -> {
+					System.out.printf(">>>>> [%s] => %s%n", key, value);
+				});
+			}
+			
+			if (Flag.flag) {
+				// field-info
+				this.mapFieldInfo07.forEach((key, value) -> {
+					System.out.printf(">>>>> [%s] => %s%n", key, value);
+				});
+			}
+		}
+		
+		if (Flag.flag) {
+			// set values of mapFieldInfo07 from JsonData202
+			JsonNode jsonNode = new ObjectMapper().readTree(new File(this.jsonDataFile202));
+			String prefix = "";
+			
+			if (this.lstFieldInfo07 != null) this.lstFieldInfo07.clear();
+			
+			// jsonfile -> jsonNode -> list
+			_parsing07(prefix, jsonNode);                                                     // TODO: important  parsing
+			
+			if (!Flag.flag) {
+				// print list
+				this.lstFieldInfo07.forEach(entry -> {
+					System.out.printf(">>>>> [%s] => %s%n", entry.getTgtValue(), entry);
+				});
+			}
+		}
+		
+		if (Flag.flag) {
+			// make J2S with field-info from mapFieldInfo07
+			// list -> stream
+			this.lstFieldInfo07.forEach(entry -> {
+				this.sbStream202.append(entry.getTgtValue());                                  // TODO: important  toStream
+			});
+			if (this.lstFieldInfo07 != null) this.lstFieldInfo07.clear();
+			
+			if (!Flag.flag) {
+				// print stream
+				System.out.printf(">>>>> (%d) [%s]%n", this.sbStream202.length(), this.sbStream202);
+			}
+		}
+		
+		if (Flag.flag) {
+			// map -> list
+			this.mapFieldInfo07.forEach((key, value) -> {
+				this.lstFieldInfo07.add(value);
+			});
+		}
+		
+		if (Flag.flag) {
+			// FAIL
+			// make S2J with field-info from mapFieldInfo07
+			/*
+			this.stringWriter = new StringWriter();
+			this.jsonGenerator = new JsonFactory().createGenerator(this.stringWriter).setPrettyPrinter(new DefaultPrettyPrinter());
+			this.offset07 = 0;
+			
+			_splitStream07();                                                               // TO DO: important  toJSON
+			*/
+		}
+		
+		if (Flag.flag) {
+			// to YAML
+			JsonNode jsonNode = new ObjectMapper().readTree(new File(this.jsonDataFile202));
+			StringBuffer yaml = new StringBuffer();
+			int depth = 0;
+			_jsonToYaml07(jsonNode, yaml, depth);
+			
+			if (Flag.flag) System.out.println(">>>>> yaml: " + yaml);
+		}
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////
+	
+	private void _jsonToYaml07(JsonNode jsonNode, StringBuffer yaml, int depth) {
+		if (jsonNode.isArray()) {
+			for (JsonNode arrItem : jsonNode) {
+				_appendNodeToYaml07(arrItem, yaml, depth, true);
+			}
+		} else if (jsonNode.isObject()) {
+			_appendNodeToYaml07(jsonNode, yaml, depth, false);
+		} else if (jsonNode.isValueNode()) {
+			yaml.append(jsonNode.asText());
+		} else {
+			new Exception("ERROR: wrong json file...");
+		}
+	}
+	
+	private void _appendNodeToYaml07(JsonNode jsonNode, StringBuffer yaml, int depth, boolean isArray) {
+		Iterator<Map.Entry<String, JsonNode>> fields = jsonNode.fields();
+		boolean isFirst = true;
+		while (fields.hasNext()) {
+			Map.Entry<String, JsonNode> node = fields.next();
+			_addFieldNameToYaml07(yaml, node.getKey(), depth, isArray && isFirst);
+			_jsonToYaml07(node.getValue(), yaml, depth + 1);
+			isFirst = false;
+		}
+	}
+	
+	private void _addFieldNameToYaml07(StringBuffer yaml, String fieldName, int depth, boolean isFirstInArray) {
+		if (yaml.length() > 0) {
+			yaml.append("\n");
+			int requiredDepth = (isFirstInArray) ? depth - 1 : depth;
+			for (int i=0; i < requiredDepth; i++) {
+				yaml.append("  ");
+			}
+			if (isFirstInArray) {
+				yaml.append("- ");
+			}
+		}
+		yaml.append(fieldName);
+		yaml.append(": ");
+	}
+	/////////////////////////////////////////////////////////////////////////////////////
+	
+	/*
+	private StringWriter stringWriter = null;
+	private JsonGenerator jsonGenerator = null;
+	private int offset07 = -1;
+	
+	private void _splitStream07() throws Exception {
+		this.jsonGenerator.writeStartObject();
+		for (int index = 0; index < this.lstFieldInfo07.size(); index++) {
+			_j2sObject07("", index);
+		}
+		this.jsonGenerator.writeEndObject();
+		this.jsonGenerator.close();
+	}
+	
+	private void _j2sObject07(String prefix, int index) throws Exception {
+		FieldInfo fieldInfo = this.lstFieldInfo07.get(index);
+		
+		if (fieldInfo.getLastName().contains(".arrSize")) {
+			// array
+			String fieldName = fieldInfo.getLastName().replace(".arrSize", "");
+			this.jsonGenerator.writeArrayFieldStart(fieldName);
+			
+			int arrCount = Integer.valueOf(_getFieldValue07(fieldInfo).trim());
+			for (int i=0; i < arrCount; i++) {
+				int arrIndex = index + 1;
+				_j2sObject07(prefix, arrIndex);
+			}
+			
+			this.jsonGenerator.writeEndArray();
+		} else {
+			// object
+			String fieldName = fieldInfo.getLastName();
+			String fieldValue = _getFieldValue07(fieldInfo).trim();
+			this.jsonGenerator.writeStringField(fieldName, fieldValue);
+		}
+	}
+	
+	private String _getFieldValue07(FieldInfo fieldInfo) {
+		String strReturn = this.sbStream202.substring(this.offset07, this.offset07 + fieldInfo.getSize());
+		this.offset07 += fieldInfo.getSize();
+		return strReturn;
+	}
+	*/
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+
+	private void _parsing07(String prefix, JsonNode jsonNode) {
+		if (jsonNode.isArray()) {
+			ArrayNode arrayNode = (ArrayNode) jsonNode;
+			_processing07(prefix + ".arrSize", String.valueOf(arrayNode.size()));
+			
+			Iterator<JsonNode> node = arrayNode.elements();
+			while (node.hasNext()) {
+				String _prefix = prefix;
+				JsonNode _jsonNode = node.next();
+				_parsing07(_prefix, _jsonNode);
+			}
+		} else if (jsonNode.isObject()) {
+			jsonNode.fields().forEachRemaining(entry -> {
+				String _prefix = prefix + "/" + entry.getKey();
+				_parsing07(_prefix, entry.getValue());
+			});
+		} else if (jsonNode.isValueNode()) {
+			_processing07(prefix, jsonNode.asText());
+		} else {
+			new Exception("ERROR: wrong json file...");
+		}
+	}
+	
+	private void _processing07(String prefix, String value) {
+		FieldInfo fieldInfo = this.mapFieldInfo07.get(prefix);
+		
+		int size = fieldInfo.getSize();
+		String tgtValue = "";
+		if (size > 0)
+			tgtValue = String.format("%-" + size + "s", value);
+		
+		this.lstFieldInfo07.add(FieldInfo.builder()
+				.idx(fieldInfo.getIdx())
+				.fullName(fieldInfo.getFullName())
+				.lastName(fieldInfo.getLastName())
+				.size(fieldInfo.getSize())
+				.srcValue(value)
+				.tgtValue(tgtValue)
+				.build());
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////
