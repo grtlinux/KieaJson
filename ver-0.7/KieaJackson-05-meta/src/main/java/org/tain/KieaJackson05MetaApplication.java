@@ -1,6 +1,7 @@
 package org.tain;
 
 import java.io.File;
+import java.io.OutputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,6 +30,8 @@ import org.tain.utils.CurrentInfo;
 import org.tain.utils.Flag;
 import org.tain.utils.PrintObject;
 
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -51,11 +54,11 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		if (Flag.flag) test01();
-		if (Flag.flag) test02();
-		if (Flag.flag) test03();
-		if (Flag.flag) test04();
-		if (Flag.flag) test05();
+		if (!Flag.flag) test01();
+		if (!Flag.flag) test02();
+		if (!Flag.flag) test03();
+		if (!Flag.flag) test04();
+		if (!Flag.flag) test05();
 		if (Flag.flag) test06();
 	}
 
@@ -587,10 +590,35 @@ public class KieaJackson05MetaApplication implements CommandLineRunner {
 	
 	private String sampleStream = null;
 	
+	/**
+	 * JsonGenerator from JsonFactory
+	 * 
+	 * @throws Exception
+	 */
 	private void test06() throws Exception {
 		log.info("KANG-20200614 >>>>> {}", CurrentInfo.get());
 		
-		if (!Flag.flag) {
+		if (Flag.flag) {
+			/*
+			 * JsonNode objectMapper.readTree(strJson);
+			 * Clazz objectMapper.readValue(strJson, Clazz.class);
+			 */
+			JsonFactory jsonFactory = new JsonFactory();
+			OutputStream outputStream = System.out;
+			@SuppressWarnings("deprecation")
+			JsonGenerator jsonGenerator = jsonFactory.createJsonGenerator(outputStream);
+			
+			jsonGenerator.writeStartObject();  // {
+			jsonGenerator.writeObjectFieldStart("name");  // name: {
+			jsonGenerator.writeStringField("first", "StreamAPIFirst");  // first: StreamAPIFirst
+			jsonGenerator.writeStringField("last", "Sixpack");  // last: Sixpack
+			jsonGenerator.writeEndObject();  // }  - name
+			jsonGenerator.writeStringField("gender", "MALE");
+			jsonGenerator.writeBooleanField("verified", false);
+			jsonGenerator.writeFieldName("userImage");
+			jsonGenerator.writeEndObject();  // }
+			jsonGenerator.close();  // close -> output.flush
+			
 			// Ready to transfer from stream to JSON
 			if (Flag.flag) System.out.printf(">>>>> stream(%d): [%s]%n", this.sampleStream.length(), this.sampleStream);
 			
