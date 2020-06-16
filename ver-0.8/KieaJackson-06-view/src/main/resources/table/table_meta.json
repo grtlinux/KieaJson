@@ -1,0 +1,160 @@
+[ {
+  "name" : "status",
+  "size" : 10
+}, {
+  "name" : "message",
+  "size" : 20
+}, {
+  "name" : "firstName",
+  "size" : 10
+}, {
+  "name" : "lastName",
+  "size" : 10
+}, {
+  "name" : "bankCode",
+  "size" : 10
+}, {
+  "name" : "accountId",
+  "size" : 20
+}, {
+  "name" : "deliveryMethod",
+  "size" : 20
+}, {
+  "name" : "address",
+  "size" : 20
+}, {
+  "name" : "city",
+  "size" : 10
+}, {
+  "name" : "countryCode",
+  "size" : 10
+}, {
+  "name" : "postalCode",
+  "size" : 20
+}, {
+  "name" : "nationalityCountryCode",
+  "size" : 10
+}, {
+  "name" : "number",
+  "size" : 10
+}, {
+  "name" : "idNumber",
+  "size" : 10
+}, {
+  "name" : "country",
+  "size" : 10
+}, {
+  "name" : "currency",
+  "size" : 10
+}, {
+  "name" : "operatorCode",
+  "size" : 10
+}, {
+  "name" : "remark",
+  "size" : 30
+}, {
+  "name" : "amount",
+  "size" : 10
+}, {
+  "name" : "transactionId",
+  "size" : 40
+}, {
+  "name" : "saveReport",
+  "size" : 10
+}, {
+  "name" : "totalRecords",
+  "size" : 10
+}, {
+  "name" : "totalPages",
+  "size" : 10
+}, {
+  "name" : "next",
+  "size" : 0
+}, {
+  "name" : "self",
+  "size" : 40
+}, {
+  "name" : "prev",
+  "size" : 0
+}, {
+  "name" : "data.arrSize",
+  "size" : 4
+}, {
+  "name" : "withdrawableAmount",
+  "size" : 10
+}, {
+  "name" : "transactionAmount",
+  "size" : 10
+}, {
+  "name" : "transactionFeeAmount",
+  "size" : 10
+}, {
+  "name" : "counterpartyTransactionId",
+  "size" : 20
+}, {
+  "name" : "withdrawalId",
+  "size" : 10
+}, {
+  "name" : "sourceTransactionId",
+  "size" : 40
+}, {
+  "name" : "sourceCountry",
+  "size" : 10
+}, {
+  "name" : "destinationCountry",
+  "size" : 10
+}, {
+  "name" : "transactionCurrency",
+  "size" : 10
+}, {
+  "name" : "feeModel",
+  "size" : 10
+}, {
+  "name" : "fee",
+  "size" : 10
+}, {
+  "name" : "feeCurrency",
+  "size" : 10
+}, {
+  "name" : "feeType",
+  "size" : 10
+}, {
+  "name" : "$schema",
+  "size" : 40
+}, {
+  "name" : "description",
+  "size" : 80
+}, {
+  "name" : "type",
+  "size" : 10
+}, {
+  "name" : "maxLength",
+  "size" : 10
+}, {
+  "name" : "required.arrSize",
+  "size" : 4
+}, {
+  "name" : "required",
+  "size" : 20
+}, {
+  "name" : "format",
+  "size" : 10
+}, {
+  "name" : "metadata",
+  "size" : 0
+}, {
+  "name" : "model",
+  "size" : 10
+}, {
+  "name" : "clientId",
+  "size" : 40
+}, {
+  "name" : "secret",
+  "size" : 70
+}, {
+  "name" : "reason",
+  "size" : 20
+}, {
+  "name" : "sourceOperatorCode",
+  "size" : 10
+} ]
