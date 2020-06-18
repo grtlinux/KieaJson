@@ -20,6 +20,10 @@ public class BoardService {
 	@Autowired
 	private BoardRepository boardRepository;
 	
+	public Page<Board> findBoardListAop(Pageable pageable) {
+		return this.findBoardList(pageable);
+	}
+	
 	public Page<Board> findBoardList(Pageable pageable) {
 		if (Flag.flag) {
 			int pageNumber = pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1;

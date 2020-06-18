@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "stmt"
 	, indexes = {
-			@Index(name = "idx_1", unique = false, columnList = "group_no"),
-			@Index(name = "idx_2", unique = true, columnList = "seq_no"),
-			@Index(name = "idx_3", unique = true, columnList = "group_no,seq_no"),
+			@Index(name = "stmt_idx_1", unique = false, columnList = "group_no"),
+			@Index(name = "stmt_idx_2", unique = true, columnList = "seq_no"),
+			@Index(name = "stmt_idx_3", unique = true, columnList = "group_no,seq_no"),
 	}
 )
 @SequenceGenerator(name = "stmt_seq"

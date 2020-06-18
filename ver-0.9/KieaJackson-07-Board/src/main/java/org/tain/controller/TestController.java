@@ -29,6 +29,8 @@ public class TestController {
 		map.put("date", LocalDateTime.now());
 		modelMap.put("data", map);
 		
+		try { Thread.sleep(2000); } catch (InterruptedException e) {}
+		
 		return "test/kang";
 	}
 }

@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "tb_board"
 	, indexes = {
-			@Index(name = "idx_1", unique = false, columnList = "title"),
+			@Index(name = "board_idx_1", unique = false, columnList = "title"),
 	}
 )
 @SequenceGenerator(name = "board_seq"

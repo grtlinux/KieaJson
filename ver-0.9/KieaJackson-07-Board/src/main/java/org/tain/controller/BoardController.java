@@ -22,21 +22,21 @@ public class BoardController {
 	private BoardService boardService;
 	
 	@GetMapping(value = {"/list"})
-	public String list(Pageable pageable, Model model) throws Exception {
+	public String listAop(Pageable pageable, Model model) throws Exception {
 		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
-		model.addAttribute("boardList", this.boardService.findBoardList(pageable));
+		model.addAttribute("boardList", this.boardService.findBoardListAop(pageable));
 		return "board/list";
 	}
 	
 	@GetMapping(value = {""})
-	public String board(@RequestParam(value = "id", defaultValue = "0") Long id, Model model) throws Exception {
+	public String boardAop(@RequestParam(value = "id", defaultValue = "0") Long id, Model model) throws Exception {
 		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
 		model.addAttribute("board", this.boardService.findBoardById(id));
 		return "board/form";
 	}
 	
 	@GetMapping(value = {"/list/{userId}"})
-	public String listByUserId(Pageable pageable, @PathVariable(value = "userId") String userId, Model model) throws Exception {
+	public String listByUserIdAop(Pageable pageable, @PathVariable(value = "userId") String userId, Model model) throws Exception {
 		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
 		model.addAttribute("boardList", this.boardService.findBoardListByUserId(pageable, userId));
 		return "board/list";
