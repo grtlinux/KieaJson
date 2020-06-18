@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 )
 @NoArgsConstructor
 @Data
+//@JsonIgnoreProperties({"id", "create_at"})  // remove when serializer / deserialize
 public class Board {
 
 	@Column
@@ -40,9 +41,15 @@ public class Board {
 	private String content;
 	
 	@Column
+	//@JsonIgnore
+	//@JsonProperty(access = Access.WRITE_ONLY)
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime createdDate;
 	
 	@Column
+	//@JsonIgnore
+	//@JsonProperty(access = Access.WRITE_ONLY)
+	//@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime updatedDate;
 	
 	@Builder
