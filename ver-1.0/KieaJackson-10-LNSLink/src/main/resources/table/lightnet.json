@@ -1,0 +1,48 @@
+[
+	{
+		"title": "auth",
+		"content": "This is an auth connection test.",
+		"userId": "kiea",
+		"reqUrl": "https://test-public.lightnetapis.io/v1/auth",
+		"reqMethod": "GET",
+		"reqJsonData": "{\"clientId\":\"pkey_tUsjZ1aL8UhvJnNibssfEGo6Y4MhSzXT\",\"secret\":\"skey_D1ZL5MW4bKW7clFW2Vz3jH8sm2k7FUfWiu5wh1aL8Uivo6RMNOa74wxfSYo5ylmk\"}",
+		"resStatus": "",
+		"resJsonData": ""
+	}, {
+		"title": "list",
+		"content": "list test job",
+		"userId": "kiea",
+		"reqUrl": "https://test-public.lightnetapis.io/v1/remittances",
+		"reqMethod": "GET",
+		"reqJsonData": "{\"clientId\":\"pkey_tUsjZ1aL8UhvJnNibssfEGo6Y4MhSzXT\",\"secret\":\"skey_D1ZL5MW4bKW7clFW2Vz3jH8sm2k7FUfWiu5wh1aL8Uivo6RMNOa74wxfSYo5ylmk\"}",
+		"resStatus": "",
+		"resJsonData": ""
+	}, {
+		"title": "detail",
+		"content": "detail test job",
+		"userId": "kiea",
+		"reqUrl": "https://test-public.lightnetapis.io/v1/remittances.detail",
+		"reqMethod": "GET",
+		"reqJsonData": "{\"clientId\":\"pkey_tUsjZ1aL8UhvJnNibssfEGo6Y4MhSzXT\",\"secret\":\"skey_D1ZL5MW4bKW7clFW2Vz3jH8sm2k7FUfWiu5wh1aL8Uivo6RMNOa74wxfSYo5ylmk\"}",
+		"resStatus": "",
+		"resJsonData": ""
+	}, {
+		"title": "validate",
+		"content": "validate test job, connect to the Lightnet",
+		"userId": "kiea",
+		"reqUrl": "https://test-public.lightnetapis.io/v1.1/remittances.validate",
+		"reqMethod": "GET",
+		"reqJsonData": "{\"clientId\":\"pkey_tUsjZ1aL8UhvJnNibssfEGo6Y4MhSzXT\",\"secret\":\"skey_D1ZL5MW4bKW7clFW2Vz3jH8sm2k7FUfWiu5wh1aL8Uivo6RMNOa74wxfSYo5ylmk\"}",
+		"resStatus": "",
+		"resJsonData": ""
+	}, {
+		"title": "commit",
+		"content": "commit test job, connect to the Lightnet",
+		"userId": "kiea",
+		"reqUrl": "https://test-public.lightnetapis.io/v1/remittances.commit",
+		"reqMethod": "GET",
+		"reqJsonData": "{ \"transactionId\":\"868db396-fec3-4b1b-7146-348307a5fbcc\"}",
+		"resStatus": "",
+		"resJsonData": ""
+	}
+]
