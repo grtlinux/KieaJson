@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>exec_popup.html</title>
+	<link rel="stylesheet" th:href="@{/css/base.css}" />
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<!-- header -->
+	<div th:replace="layout/header::header"></div>
+	<!-- /header -->
+	
+	<!-- main -->
+	<div class="container">
+		<div class="page-header">
+			<h1>전문 테스트</h1>
+		</div>
+		<br/>
+		<table class="table">
+			<tr>
+				<th style="padding:13px 0 0 15px;">제목</th>
+				<td><input id="lightnet_title" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.title}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">요청 URL</th>
+				<td><input id="lightnet_req_url" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.reqUrl}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">요청 Method</th>
+				<td><input id="lightnet_req_method" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.reqMethod}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">요청 JSON Data</th>
+				<td><textarea id="lightnet_req_json_data" class="col-md-1 form-control input-sm" maxlength="140" rows="10" style="height: 100px;" th:text="${lightnet?.reqJsonData}"></textarea><span class="help-block"></span></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">응답 Status</th>
+				<td><input id="lightnet_res_status" type="text" class="col-md-1 form-control input-sm" value=""/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">응답 JSON Data</th>
+				<td><textarea id="lightnet_res_json_data" class="col-md-1 form-control input-sm" maxlength="140" rows="10" style="height: 100px;" text=""></textarea><span class="help-block"></span></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<div class="pull-left">
+			<button type="button" class="btn btn-danger" id="execJob">실행</button>
+		</div>
+		<div class="pull-right">
+			<button type="button" class="btn btn-primary" id="closePopup">닫기</button>
+		</div>
+	</div>
+	<br/><br/> <br/><br/>
+	<!-- /main -->
+	
+	<!-- footer -->
+	<div th:replace="layout/footer::footer"></div>
+	<!-- /footer -->
+	
+	<!-- script -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script>
+		$('#execJob').click(function() {
+			var jsonData = JSON.stringify({
+				title: $('#lightnet_title').val(),
+				reqUrl: $('#lightnet_req_url').val(),
+				reqMethod: $('#lightnet_req_method').val(),
+				reqJsonData: $('#lightnet_req_json_data').val(),
+			});
+			$.ajax({
+				url: "http://localhost:8080/rest/lightnet/" + $('#lightnet_title').val(),
+				type: "POST",
+				data: jsonData,
+				contentType: "application/json",
+				header: {
+					"Authorization": "Basic " + btoa("havi" + ":" + "test")
+				},
+				dataType: "json",
+				success: function(response) {
+					alert('실행 성공~~');
+					$('#lightnet_res_status').val("SUCCESS")
+					$('#lightnet_res_json_data').val(JSON.stringify(response, null, 2));
+				},
+				error: function() {
+					alert('실행 실패!!');
+					$('#lightnet_res_status').val("FAIL")
+				}
+			});
+		});
+	</script>
+	<script>
+		$('#closePopup').click(function() {
+			window.close();
+		});
+	</script>
+	<!-- /script -->
+</body>
+</html>

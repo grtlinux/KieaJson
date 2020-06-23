@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>list.html</title>
+	<link rel="stylesheet" th:href="@{/css/base.css}"/>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+	<!-- header -->
+	<div th:replace="layout/header::header"></div>
+	<!-- /header -->
+	
+	<!-- main -->
+	<div class="container">
+		<div class="page-header">
+			<h1>전문 목록</h1>
+		</div>
+		<div class="pull-right" style="width:100px;margin:10px 0;">
+			<a href="/lightnet" class="btn btn-primary btn-block">등록</a>
+		</div>
+		<br/><br/><br/>
+		<div id="mainHide">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th class="col-md-1">#</th>
+						<th class="col-md-1">제목</th>
+						<th class="col-md-6">부제</th>
+						<th class="col-md-2">사용자</th>
+						<th class="col-md-2">생성날짜</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="lightnet : ${lightnetList}">
+						<td th:text="${lightnet.id}">#</td>
+						<td><a th:href="'/lightnet?id='+${lightnet.id}" th:text="${lightnet.title}">제목</a></td>
+						<td th:text="${lightnet.content}">부제</td>
+						<td th:text="${lightnet.userId}">사용자</td>
+						<td th:text="${lightnet.createdDate} ? ${#temporals.format(lightnet.createdDate,'yyyy-MM-dd HH:mm')} : ${lightnet.createdDate}">생성 날짜</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<br/>
+		
+		<!-- pagination -->
+		<nav aria-label="Page navigation" style="text-align:center;">
+			<ul class="pagination" th:with="startNumber=${T(Math).floor(lightnetList.number/10)}*10+1, endNumber=(${lightnetList.totalPages} > ${startNumber}+9) ? ${startNumber}+9 : ${lightnetList.totalPages}">
+				<li><a aria-label="Previous" href="/lightnet/list?page=1">&laquo;</a></li>
+				<li th:style="${lightnetList.first} ? 'display:none'">
+					<a th:href="@{/lightnet/list(page=${lightnetList.number})}">&lsaquo;</a>
+				</li>
+
+				<li th:each="page :${#numbers.sequence(startNumber, endNumber)}" th:class="(${page} == ${lightnetList.number}+1) ? 'active'">
+					<a th:href="@{/lightnet/list(page=${page})}" th:text="${page}"><span class="sr-only"></span></a>
+				</li>
+
+				<li th:style="${lightnetList.last} ? 'display:none'">
+					<a th:href="@{/lightnet/list(page=${lightnetList.number}+2)}">&rsaquo;</a>
+				</li>
+				<li><a aria-label="Next" th:href="@{/lightnet/list(page=${lightnetList.totalPages})}">&raquo;</a></li>
+			</ul>
+		</nav>
+		<div style="text-align:center;">
+			(<th:block th:text="${lightnetList.number}+1"/> / <th:block th:text="${lightnetList.totalPages}"/>)
+		</div>
+		<!-- /Pagination -->
+	</div>
+	<br/><br/> <br/><br/>
+	<!-- /main -->
+	
+	<!-- footer -->
+	<div th:replace="layout/footer::footer"></div>
+	<!-- /footer -->
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>form.html</title>
+	<link rel="stylesheet" th:href="@{/css/base.css}" />
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<!-- header -->
+	<div th:replace="layout/header::header"></div>
+	<!-- /header -->
+	
+	<!-- main -->
+	<div class="container">
+		<div class="page-header">
+			<h1>전문 정보</h1>
+		</div>
+		<br/>
+		<input id="lightnet_id" type="hidden" th:value="${lightnet?.id}"/>
+		<input id="lightnet_create_date" type="hidden" th:value="${lightnet?.createdDate}"/>
+		<table class="table">
+			<tr>
+				<th style="padding:13px 0 0 15px;">생성날짜</th>
+				<td><input type="text" class="col-md-1 form-control input-sm" readonly="readonly" th:value="${lightnet?.createdDate} ? ${#temporals.format(lightnet.createdDate,'yyyy-MM-dd HH:mm')} : ${lightnet?.createdDate}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">제목</th>
+				<td><input id="lightnet_title" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.title}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">내용</th>
+				<td><input id="lightnet_content" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.content}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">사용자</th>
+				<td><input id="lightnet_user_id" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.userId}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">요청 URL</th>
+				<td><input id="lightnet_req_url" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.reqUrl}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">요청 Method</th>
+				<td><input id="lightnet_req_method" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.reqMethod}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">요청 JSON Data</th>
+				<td><textarea id="lightnet_req_json_data" class="col-md-1 form-control input-sm" maxlength="140" rows="10" style="height: 150px;" th:text="${lightnet?.reqJsonData}"></textarea><span class="help-block"></span></td>
+			</tr>
+			<!--
+			<tr>
+				<th style="padding:13px 0 0 15px;">응답 Status</th>
+				<td><input id="lightnet_res_status" type="text" class="col-md-1 form-control input-sm" th:value="${lightnet?.resStatus}"/></td>
+			</tr>
+			<tr>
+				<th style="padding:13px 0 0 15px;">응답 JSON Data</th>
+				<td><textarea id="lightnet_res_json_data" class="col-md-1 form-control input-sm" maxlength="140" rows="10" style="height: 100px;" th:text="${lightnet?.resJsonData}"></textarea><span class="help-block"></span></td>
+			</tr>
+			-->
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<div class="pull-left">
+			<a href="/lightnet/list" class="btn btn-default">목록으로</a>
+			<button type="button" class="btn btn-danger" id="execPopup">실행팝업</button>
+		</div>
+		<div class="pull-right">
+			<button th:if="!${lightnet?.id}" type="button" class="btn btn-primary" id="insert">저장</button>
+			<button th:if="${lightnet?.id}" type="button" class="btn btn-info" id="update">수정</button>
+			<button th:if="${lightnet?.id}" type="button" class="btn btn-danger" id="delete">삭제</button>
+		</div>
+	</div>
+	<!-- /main -->
+	
+	<!-- footer -->
+	<div th:replace="layout/footer::footer"></div>
+	<!-- /footer -->
+	
+	<!-- script -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:if="!${lightnet?.id}">
+		$('#insert').click(function() {
+			var jsonData = JSON.stringify({
+				title: $('#lightnet_title').val(),
+				subTitle: $('#lightnet_sub_title').val(),
+				userId: $('#lightnet_user_id').val(),
+				content: $('#lightnet_content').val()
+			});
+			$.ajax({
+				url: "http://localhost:8080/api/lightnets/",
+				type: "POST",
+				data: jsonData,
+				contentType: "application/json",
+				header: {
+					"Authorization": "Basic " + btoa("havi" + ":" + "test")
+				},
+				dataType: "json",
+				success: function() {
+					alert('저장 성공~~');
+					location.href = '/lightnet/list';
+				},
+				error: function() {
+					alert('저장 실패!!');
+				}
+			});
+		});
+	</script>
+	<script th:if="${lightnet?.id}">
+		$('#update').click(function() {
+			var jsonData = JSON.stringify({
+				title: $('#lightnet_title').val(),
+				subTitle: $('#lightnet_sub_title').val(),
+				userId: $('#lightnet_user_id').val(),
+				content: $('#lightnet_content').val(),
+				createdDate: $('#lightnet_create_date').val()
+			});
+			$.ajax({
+				url: "http://localhost:8080/api/lightnets/" + $('#lightnet_id').val(),
+				type: "PUT",
+				data: jsonData,
+				contentType: "application/json",
+				dataType: "json",
+				success: function() {
+					alert('수정 성공~~');
+					location.href = '/lightnet/list';
+				},
+				error: function() {
+					alert('수정 실패!!');
+				}
+			});
+		});
+		$('#delete').click(function() {
+			$.ajax({
+				url: "http://localhost:8080/api/lightnets/" + $('#lightnet_id').val(),
+				type: "DELETE",
+				success: function() {
+					alert('삭제 성공~~');
+					location.href = '/lightnet/list';
+				},
+				error: function() {
+					alert('삭제 실패!!');
+				}
+			});
+		});
+	</script>
+	<script>
+		$('#execPopup').click(function() {
+			var execPopup = window.open('', 'EXEC_POPUP', 'top=50,left=50, width=800,height=750, location=no,status=no,toolbar=no,scrollbars=yes');
+			$('#execpopup_title').val($('#lightnet_title').val());
+			$('#execpopup_req_url').val($('#lightnet_req_url').val());
+			$('#execpopup_req_method').val($('#lightnet_req_method').val());
+			$('#execpopup_req_json_data').val($('#lightnet_req_json_data').val());
+			var frmExecPopup = document.frmExecPopup;
+			frmExecPopup.target = "EXEC_POPUP";
+			frmExecPopup.action = "/lightnet/exec_popup";
+			frmExecPopup.method = "POST";
+			frmExecPopup.submit();
+			execPopup.focus();
+		});
+	</script>
+	<form name="frmExecPopup" id="frmExecPopup">
+		<input type="hidden" id="execpopup_title" name="execpopup_title" value=""/>
+		<input type="hidden" id="execpopup_req_url" name="execpopup_req_url" value=""/>
+		<input type="hidden" id="execpopup_req_method" name="execpopup_req_method" value=""/>
+		<input type="hidden" id="execpopup_req_json_data" name="execpopup_req_json_data" value=""/>
+	</form>
+</body>
+</html>
