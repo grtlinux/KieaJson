@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduledTask {
 
-	@Scheduled(fixedRate = 5000)
+	//@Scheduled(fixedRate = 5000)
 	public void reportCurrentTime() {
 		System.out.println("KANG-20200623 >>>>> " + LocalDateTime.now());
 	}
