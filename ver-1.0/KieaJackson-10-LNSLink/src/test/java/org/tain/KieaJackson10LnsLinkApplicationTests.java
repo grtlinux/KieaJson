@@ -9,5 +9,4 @@ class KieaJackson10LnsLinkApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }
