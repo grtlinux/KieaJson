@@ -1,0 +1,41 @@
+{
+    "receiver": {
+        "firstName": "SOPIDA",
+        "lastName": "WANGKIATKUL",
+        "bankCode": "SICOTHBK",
+        "accountId": "6032668977"
+    },
+    "deliveryMethod": "account_deposit",
+    "sender": {
+        "firstName": "NDBXMX",
+        "lastName": "GYQMNB",
+        "address": {
+            "address": "senderAddress",
+            "city": "senderCity",
+            "countryCode": "THA",
+            "postalCode": "senderZipCode"
+        },
+        "nationalityCountryCode": "KOR",
+        "mobilePhone": {
+            "number": "881111111",
+            "countryCode": "66"
+        },
+        "idNumber": "idNumber"
+    },
+    "destination": {
+        "country": "THA",
+        "receive": {
+            "currency": "THB"
+        },
+        "operatorCode": "scb"
+    },
+    "remark": "This is SCB test remark",
+    "source": {
+        "country": "KOR",
+        "send": {
+            "amount": "1000.01",
+            "currency": "USD"
+        },
+        "transactionId": "9974531076200937"
+    }
+}

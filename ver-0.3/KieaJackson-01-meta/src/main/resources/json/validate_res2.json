@@ -1,0 +1,65 @@
+{
+    "status": "success",
+    "message": "OK",
+    "data": {
+        "transactionId": "62bbb4b8-fe03-40d2-6f30-92baf54da82d",
+        "deliveryMethod": "account_deposit",
+        "source": {
+            "transactionId": "9974531076200937",
+            "operatorCode": "hanwha",
+            "country": "KOR",
+            "send": {
+                "amount": "1000.0100",
+                "currency": "USD"
+            }
+        },
+        "destination": {
+            "transactionId": "D014017804533540",
+            "operatorCode": "scb",
+            "country": "THA",
+            "receive": {
+                "amount": "31040.5700",
+                "currency": "THB"
+            }
+        },
+        "fee": {
+            "amount": "0.7000",
+            "currency": "USD",
+            "model": "included"
+        },
+        "rate": {
+            "from": {
+                "amount": "1.0000",
+                "currency": "USD"
+            },
+            "to": {
+                "amount": "31.0620",
+                "currency": "THB"
+            }
+        },
+        "sender": {
+            "firstName": "NDBXMX",
+            "lastName": "GYQMNB",
+            "address": {
+                "address": "senderAddress",
+                "city": "senderCity",
+                "countryCode": "THA",
+                "postalCode": "senderZipCode"
+            },
+            "nationalityCountryCode": "KOR",
+            "mobilePhone": {
+                "number": "881111111",
+                "countryCode": "66"
+            },
+            "idNumber": "idNumber"
+        },
+        "receiver": {
+            "firstName": "SOPIDA",
+            "lastName": "WANGKIATKUL",
+            "bankCode": "SICOTHBK",
+            "accountId": "6032668977"
+        },
+        "status": "PENDING",
+        "remittanceType": "MESSAGING"
+    }
+}

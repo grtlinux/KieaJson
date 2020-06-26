@@ -1,0 +1,12 @@
+{
+    "status": "success",
+    "message": "OK",
+    "data": {
+        "transactionId": "62bbb4b8-fe03-40d2-6f30-92baf54da82d",
+        "destination": {
+            "transactionId": "D014017804533540",
+            "withdrawalId": ""
+        },
+        "status": "RECEIVED"
+    }
+}
