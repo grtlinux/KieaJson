@@ -35,12 +35,79 @@ spring:
     max-page-size: 20
   
   servlet.multipart:
+    enabled: true
+    location: ~/FILES
     max-file-size: 5GB
     max-request-size: 5GB
   
   devtools:
     livereload.enabled: true
   
+
+#########################################################
+#
+# $ java -jar application.jar --spring.profiles.active=logging-debug,logging-daily
+#
+# logging.file:             절대경로 또는 현재경로의 상대경로로 로그파일을 지정
+# logging.file.path:        logging.file이 없을 때 동작. 지정경로에 spring.log
+# logging.file.max-size:    default 10MB 이상 초과하면 spring1.log, spring2.log ...
+# logging.file.max-history: 특정일수가 지난 로그파일을 자동 삭
+# logging.level.*:          path 기반으로 logger의 level을 지정한다.
+# - spring-boot 2.0.0부터는 rolling 정책이 SizeAndTimeBasedRollingPolicy로 변경
+# - TRACE DEBUG INFO WARN ERROR FATAL OFF
+#
+# %clr{%d{yyyy-MM-dd HH:mm:ss.SSS}}{faint} %clr{${LOG_LEVEL_PATTERN}} %clr{${sys:PID}}{magenta} 
+#     %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} 
+#     %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}
+#
+#  output:
+#    ansi:
+#      enabled: DETECT     # ALWAYS / NEVER / DETECT
+#      # FATAL and ERROR – Red
+#      # WARN – Yellow
+#      # INFO, DEBUG and TRACE – Green
+#
+# [ 패턴에 사용되는 요소 ]
+#     %Logger{length} : Logger name을 축약할 수 있다. {length}는 최대 자리 수, ex)logger{35}
+#     %-5level : 로그 레벨, -5는 출력의 고정폭 값(5글자)
+#     %msg : - 로그 메시지 (=%message)
+#     ${PID:-} : 프로세스 아이디
+#     %d : 로그 기록시간
+#     %p : 로깅 레벨
+#     %F : 로깅이 발생한 프로그램 파일명
+#     %M : 로깅일 발생한 메소드의 명
+#     %l : 로깅이 발생한 호출지의 정보
+#     %L : 로깅이 발생한 호출지의 라인 수
+#     %thread : 현재 Thread 명
+#     %t : 로깅이 발생한 Thread 명
+#     %c : 로깅이 발생한 카테고리
+#     %C : 로깅이 발생한 클래스 명
+#     %m : 로그 메시지
+#     %n : 줄바꿈(new line)
+#     %% : %를 출력
+#     %r : 애플리케이션 시작 이후부터 로깅이 발생한 시점까지의 시간(ms)
+# 
+#########################################################
+logging:
+  #file: /zlogs/application-dev.log
+  file:
+    path: logs/
+    # name: application-kiea.log
+    max-size: 1MB
+  pattern:
+    # console: "%-4relative [%thread] %-5level %logger{35} - %msg%n"
+    # console: "%d %-5level - %msg%n"
+    console: "%d{HH:mm:ss} %-5level - %msg%n"
+    file: "%d %-5level [%-10thread] %-30logger{30} - %msg%n"
+  level:
+    root: info
+    org.tain.controller.*: info
+    # show sql statement
+    org.hibernate.SQL: info
+    org.hibernate.type: info
+    # show sql values
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
 
 ########################################################
 json:
@@ -53,7 +120,7 @@ json:
 
 ########################################################
 ########################################################
-spring.profiles.active: local-http
+spring.profiles.active: local-http #, logging-dev
 
 ---
 spring:
@@ -74,6 +141,82 @@ server:
     key-store-password: server
     key-alias: serverkey
     
+    
+########################################################
+
+---
+spring:
+  profiles: logging-dev
+
+logging:
+  # path: aaa
+  file:
+    filenamePattern: myfile. % d {yyyy-MM-dd-HH-mm-ss} .log
+  # file: /logs/application-debug.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    # level:
+  level:
+    root: debug
+    org.tain.controller: debug
+    org.tain.service: debug
+    org.tain.repository: debug
+    org.tain.domain: debug
+
+---
+spring:
+  profiles: logging-prod
+
+logging:
+  file: /logs/application-debug.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    root: error
+    org.tain.controller: warn
+    org.tain.service: info
+    org.tain.repository: debug
+    org.tain.domain: trace
+
+---
+spring.profiles: logging-info
+logging:
+  file: logs/application.log
+  level:
+    org.thymeleaf: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: INFO
+    org.quartz.core: INFO
+    org.h2.server.web: INFO
+ 
+---
+spring.profiles: logging-debug
+logging:
+  file: logs/application.log
+  level:
+    org.thymeleaf: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.quartz.core: DEBUG
+    org.h2.server.web: DEBUG
+ 
+---
+spring.profiles: logging-daily
+logging:
+  config: classpath:logback-spring.xml
+
+
+
+
+
+
+
+
+
+
+
 
 
 
