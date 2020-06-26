@@ -16,7 +16,9 @@ import javax.persistence.TemporalType;
 
 import org.tain.annotation.ColumnPosition;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 
 import lombok.Builder;
 import lombok.Data;
@@ -69,6 +71,7 @@ public class Board {
 	private LocalDateTime createdDate = LocalDateTime.now();
 
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "job_date")
 	@ColumnPosition(7)
 	private Date jobDate;
