@@ -33,4 +33,25 @@ public class TestController {
 		
 		return "test/kang";
 	}
+	
+	@GetMapping(value = {"/kang1"})
+	public String testKang1(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws Exception {
+		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
+		
+		return "test/kang1";
+	}
+
+	@GetMapping(value = {"/kang2"})
+	public String testKang2(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws Exception {
+		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
+		
+		return "test/kang2";
+	}
+
+	@GetMapping(value = {"/kang3"})
+	public String testKang3(HttpServletRequest request, HttpServletResponse response, ModelMap modelMap) throws Exception {
+		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
+		
+		return "test/kang3";
+	}
 }
