@@ -1,5 +1,6 @@
 package org.tain.domain;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -27,7 +28,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "tb_board"
 	, indexes = {
-			@Index(name = "board_idx_1", unique = false, columnList = "title"),
+			@Index(name = "board_title_idx", unique = false, columnList = "title"),
+			@Index(name = "board_userid_idx", unique = false, columnList = "user_id"),
 	}
 )
 @SequenceGenerator(name = "board_seq"
@@ -76,6 +78,11 @@ public class Board {
 	@ColumnPosition(7)
 	private Date jobDate;
 	
+	@JsonIgnore
+	//@Temporal(TemporalType.TIMESTAMP)   // ERROR
+	@Column(name = "work_date")
+	private Timestamp workDate;
+
 	@Builder
 	public Board(
 			String title,
@@ -88,5 +95,7 @@ public class Board {
 		this.content = content;
 		this.userId = userId;
 		this.jobDate = new Date();
+		//this.workDate = new Timestamp(this.jobDate.getTime());
+		this.workDate = new Timestamp(System.currentTimeMillis());
 	}
 }
