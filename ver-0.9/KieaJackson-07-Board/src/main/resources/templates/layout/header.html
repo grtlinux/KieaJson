@@ -31,4 +31,49 @@
 
 
 
+<!-- header2 -->
+<div th:fragment="header2">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a th:href="@{/}" class="navbar-brand" style="text-decoration:none;">
+					<img th:src="@{/images/spring_boot_gray.png}" class="img-rounded" style="display:inline-block;height:100%;margin-right:5px;" />
+					<span style="vertical-align:middle;">LNS System</span>
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<!-- navbar menu -->
+				<ul class="nav navbar-nav navbar-left">
+					<li><a data-target="#modalSelfInfo" data-toggle="modal" href="#" onclick="alert('toggle event after click event.....');">MyInfo</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Customer<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><span class="glyphicon glyphicon-list-all"></span>&nbsp;Info</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-list-all"></span>&nbsp;Role</a></li>
+							<li class="divider"></li>
+							<li><a href="#"><span class="glyphicon glyphicon-list-all"></span>&nbsp;Order</a></li>
+						</ul>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Order<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><span class="glyphicon glyphicon-list-all"></span>&nbsp;List</a></li>
+							<li><a href="#"><span class="glyphicon glyphicon-list-all"></span>&nbsp;Result</a></li>
+						</ul>
+					</li>
+					<li class="hide"><a href="/sample05/">Statistic</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
+<!-- /header2 -->
+
+
+
 </html>
