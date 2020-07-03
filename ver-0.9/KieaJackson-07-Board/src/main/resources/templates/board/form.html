@@ -46,7 +46,7 @@
 			</tr>
 		</table>
 		<div class="pull-left">
-			<a href="/board/list" class="btn btn-default">목록으로</a>
+			<a th:href="@{/board/list}" class="btn btn-default">목록으로</a>
 		</div>
 		<div class="pull-right">
 			<button th:if="!${board?.id}" type="button" class="btn btn-primary" id="insert">저장</button>
@@ -62,6 +62,9 @@
 	
 	<!-- script -->
 	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:inline="javascript">
+		var contextPath = /*[[@{/}]]*/ 'contextPath';
+	</script>
 	<script th:if="!${board?.id}">
 		$('#insert').click(function() {
 			var jsonData = JSON.stringify({
@@ -71,7 +74,7 @@
 				content: $('#board_content').val()
 			});
 			$.ajax({
-				url: "http://localhost:8080/api/boards/",
+				url: contextPath + "/api/boards/",
 				type: "POST",
 				data: jsonData,
 				contentType: "application/json",
@@ -81,7 +84,7 @@
 				dataType: "json",
 				success: function() {
 					alert('저장 성공~~');
-					location.href = '/board/list';
+					location.href = contextPath + '/board/list';
 				},
 				error: function() {
 					alert('저장 실패!!');
@@ -99,14 +102,14 @@
 				createdDate: $('#board_create_date').val()
 			});
 			$.ajax({
-				url: "http://localhost:8080/api/boards/" + $('#board_id').val(),
+				url: contextPath + "/api/boards/" + $('#board_id').val(),
 				type: "PUT",
 				data: jsonData,
 				contentType: "application/json",
 				dataType: "json",
 				success: function() {
 					alert('수정 성공~~');
-					location.href = '/board/list';
+					location.href = contextPath + '/board/list';
 				},
 				error: function() {
 					alert('수정 실패!!');
@@ -115,11 +118,11 @@
 		});
 		$('#delete').click(function() {
 			$.ajax({
-				url: "http://localhost:8080/api/boards/" + $('#board_id').val(),
+				url: contextPath + "/api/boards/" + $('#board_id').val(),
 				type: "DELETE",
 				success: function() {
 					alert('삭제 성공~~');
-					location.href = '/board/list';
+					location.href = contextPath + '/board/list';
 				},
 				error: function() {
 					alert('삭제 실패!!');

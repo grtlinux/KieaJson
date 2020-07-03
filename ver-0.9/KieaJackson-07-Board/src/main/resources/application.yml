@@ -126,7 +126,9 @@ spring.profiles.active: local-http #, logging-dev
 spring:
   profiles: local-http
   
-server.port: 8080
+server:
+  port: 8080
+  servlet.context-path: /v0.1
 
 ---
 spring:
