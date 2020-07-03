@@ -3,12 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>form.html</title>
-	<link rel="stylesheet" th:href="@{/css/base.css}" />
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+	<!-- css and script -->
+	<th:block th:replace="layout/css::css1"></th:block>
+	<th:block th:replace="layout/script::script1"></th:block>
+	<!-- /css and script -->
 </head>
 <body>
 	<!-- header -->
-	<div th:replace="layout/header::header"></div>
+	<div th:replace="layout/header::header1"></div>
 	<!-- /header -->
 	
 	<!-- main -->
@@ -57,14 +59,10 @@
 	<!-- /main -->
 	
 	<!-- footer -->
-	<div th:replace="layout/footer::footer"></div>
+	<div th:replace="layout/footer::footer1"></div>
 	<!-- /footer -->
 	
 	<!-- script -->
-	<script th:src="@{/js/jquery.min.js}"></script>
-	<script th:inline="javascript">
-		var contextPath = /*[[@{/}]]*/ 'contextPath';
-	</script>
 	<script th:if="!${board?.id}">
 		$('#insert').click(function() {
 			var jsonData = JSON.stringify({
@@ -74,7 +72,7 @@
 				content: $('#board_content').val()
 			});
 			$.ajax({
-				url: contextPath + "/api/boards/",
+				url: _contextPath_ + "/api/boards/",
 				type: "POST",
 				data: jsonData,
 				contentType: "application/json",
@@ -84,7 +82,7 @@
 				dataType: "json",
 				success: function() {
 					alert('저장 성공~~');
-					location.href = contextPath + '/board/list';
+					location.href = _contextPath_ + '/board/list';
 				},
 				error: function() {
 					alert('저장 실패!!');
@@ -102,14 +100,14 @@
 				createdDate: $('#board_create_date').val()
 			});
 			$.ajax({
-				url: contextPath + "/api/boards/" + $('#board_id').val(),
+				url: _contextPath_ + "/api/boards/" + $('#board_id').val(),
 				type: "PUT",
 				data: jsonData,
 				contentType: "application/json",
 				dataType: "json",
 				success: function() {
 					alert('수정 성공~~');
-					location.href = contextPath + '/board/list';
+					location.href = _contextPath_ + '/board/list';
 				},
 				error: function() {
 					alert('수정 실패!!');
@@ -118,11 +116,11 @@
 		});
 		$('#delete').click(function() {
 			$.ajax({
-				url: contextPath + "/api/boards/" + $('#board_id').val(),
+				url: _contextPath_ + "/api/boards/" + $('#board_id').val(),
 				type: "DELETE",
 				success: function() {
 					alert('삭제 성공~~');
-					location.href = contextPath + '/board/list';
+					location.href = _contextPath_ + '/board/list';
 				},
 				error: function() {
 					alert('삭제 실패!!');

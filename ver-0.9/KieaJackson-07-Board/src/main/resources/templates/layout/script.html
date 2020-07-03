@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<!-- script1 -->
+<th:block th:fragment="script1">
+	<!-- script1 -->
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:inline="javascript">
+		var _contextPath_ = /*[[@{/}]]*/ 'contextPath';
+	</script>
+	<!-- /script1 -->
+</th:block>
+<!-- /script1 -->
+
+
+
+
+
+</html>
