@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.tain.domain.Board;
 import org.tain.repository.BoardRepository;
 import org.tain.utils.CurrentInfo;
@@ -17,6 +18,7 @@ import org.tain.utils.Flag;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
+@EnableScheduling
 @Slf4j
 public class KieaJackson07BoardApplication implements CommandLineRunner {
 
@@ -27,11 +29,22 @@ public class KieaJackson07BoardApplication implements CommandLineRunner {
 	
 	///////////////////////////////////////////////////////////////////////////////////
 
+	@Override
+	public void run(String... args) throws Exception {
+		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
+		
+		if (Flag.flag) job01();
+		if (Flag.flag) job02();
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////
+	
 	@Autowired
 	private BoardRepository boardRepository;
 	
-	@Override
-	public void run(String... args) throws Exception {
+	private void job01() throws Exception {
 		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
 		
 		Random random = new Random(new Date().getTime());
@@ -54,11 +67,13 @@ public class KieaJackson07BoardApplication implements CommandLineRunner {
 					.build());
 		});
 	}
-
+	
 	///////////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////
-	///////////////////////////////////////////////////////////////////////////////////
+	
+	private void job02() throws Exception {
+		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
+	}
+	
 	///////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
 	///////////////////////////////////////////////////////////////////////////////////
