@@ -1,0 +1,33 @@
+[
+	{
+		"name": "firstName",
+		"size": 30,
+		"align": "L",
+		"description": "first name"
+	}, {
+		"name": "lastName",
+		"size": 30,
+		"align": "L",
+		"description": "last name"
+	}, {
+		"name": "bankCode",
+		"size": 10,
+		"align": "L",
+		"description": "the code of some bank"
+	}, {
+		"name": "transactionId",
+		"size": 124,
+		"align": "L",
+		"description": "the code of transaction Id on Lightnet"
+	}, {
+		"name": "sourceTransactionId",
+		"size": 124,
+		"align": "L",
+		"description": "the code of transaction Id on source MTO"
+	}, {
+		"name": "targetTransactionId",
+		"size": 124,
+		"align": "L",
+		"description": "the code of transaction Id on target MTO"
+	}
+]

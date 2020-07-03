@@ -1,0 +1,13 @@
+[
+	{
+		"grpCode": "101",
+		"grpName": "auth",
+		"direction": "REQ",
+		"description": "the request packet of 'auth'."
+	},{
+		"grpCode": "102",
+		"grpName": "auth",
+		"direction": "RES",
+		"description": "the response packet of 'auth'."
+	}
+]
