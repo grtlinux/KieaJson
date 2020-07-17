@@ -10,11 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.tain.annotation.ColumnPosition;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -57,7 +60,8 @@ public class Board {
 	@ColumnPosition(3)
 	private String subTitle;
 	
-	@Column(name = "content", length = 1024)
+	@Lob
+	@Column(name = "content")
 	@ColumnPosition(4)
 	private String content;
 	
@@ -70,17 +74,20 @@ public class Board {
 	//@JsonIgnore
 	//@JsonProperty(access = Access.WRITE_ONLY)
 	//@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@CreationTimestamp
 	private LocalDateTime createdDate = LocalDateTime.now();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 	@Column(name = "job_date")
 	@ColumnPosition(7)
+	@UpdateTimestamp
 	private Date jobDate;
 	
 	@JsonIgnore
 	//@Temporal(TemporalType.TIMESTAMP)   // ERROR
 	@Column(name = "work_date")
+	@UpdateTimestamp
 	private Timestamp workDate;
 
 	@Builder
@@ -94,8 +101,8 @@ public class Board {
 		this.subTitle = subTitle;
 		this.content = content;
 		this.userId = userId;
-		this.jobDate = new Date();
+		//this.jobDate = new Date();
 		//this.workDate = new Timestamp(this.jobDate.getTime());
-		this.workDate = new Timestamp(System.currentTimeMillis());
+		//this.workDate = new Timestamp(System.currentTimeMillis());
 	}
 }
