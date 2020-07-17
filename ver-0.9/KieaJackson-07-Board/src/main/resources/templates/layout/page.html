@@ -24,7 +24,7 @@
 		</ul>
 	</nav>
 	<div style="text-align:center;">
-		(<th:block th:text="${boardList.number}+1"/> / <th:block th:text="${boardList.totalPages}"/>)
+		(<!-- th:block th:text="${boardList.content}"/ --> <th:block th:text="${boardList.totalElements}"/> : <th:block th:text="${boardList.numberOfElements}"/> : <th:block th:text="${boardList.number}+1"/> / <th:block th:text="${boardList.totalPages}"/>)
 	</div>
 	<!-- /page1 -->
 </th:block>
