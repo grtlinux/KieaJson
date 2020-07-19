@@ -27,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonFormat.Shape;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "tb_board"
@@ -40,9 +41,10 @@ import lombok.NoArgsConstructor;
 	, initialValue = 1
 	, allocationSize = 1
 )
-@NoArgsConstructor
 @Data
+@NoArgsConstructor
 //@JsonIgnoreProperties({"id", "created_date"})
+@ToString(exclude = {"workDate", "jobDate"})
 public class Board {
 
 	@Id
