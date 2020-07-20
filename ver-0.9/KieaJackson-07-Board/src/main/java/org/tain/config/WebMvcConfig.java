@@ -1,6 +1,8 @@
 package org.tain.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -8,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * TODO: FAIL
  */
 @Configuration
+@EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
@@ -19,5 +22,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		//registry.addViewController("/board/list").setViewName("board/list");
 		
 		//WebMvcConfigurer.super.addViewControllers(registry);
+	}
+	
+	//@Override
+	public void addCorsMapping(CorsRegistry corsRegistry) {
+		corsRegistry.addMapping("/**");
 	}
 }

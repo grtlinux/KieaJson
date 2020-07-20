@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
+	@CrossOrigin(origins = {"http://localhost:9000"}, maxAge = 3600)
 	@GetMapping(value = {"/list"})
 	public String listAop(Pageable pageable, Model model) throws Exception {
 		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
@@ -28,6 +30,7 @@ public class BoardController {
 		return "board/list";
 	}
 	
+	@CrossOrigin(origins = {"http://localhost:9000"}, maxAge = 3600)
 	@GetMapping(value = {""})
 	public String boardAop(@RequestParam(value = "id", defaultValue = "0") Long id, Model model) throws Exception {
 		log.info("KANG-20200618 >>>>> {}", CurrentInfo.get());
