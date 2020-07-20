@@ -93,16 +93,24 @@ spring:
 # 
 #########################################################
 logging:
-  #file: /zlogs/application-dev.log
+  # config: classpath:logback-spring.xml
+  # file: /zlogs/application-dev.log
   file:
-    path: logs/
+    # filenamePattern: myfile.%d{yy-MM-dd}.log
+    path: logs/board/
     # name: application-kiea.log
     max-size: 1MB
+    max-history: 10
+    
   pattern:
     # console: "%-4relative [%thread] %-5level %logger{35} - %msg%n"
     # console: "%d %-5level - %msg%n"
-    console: "%d{HH:mm:ss} %-5level - %msg%n"
-    file: "%d %-5level [%-10thread] [%-30logger{30}:%line] - %msg%n"
+    # console: "%d{HH:mm:ss} %-5level - %msg%n"
+    console: "%clr(%d{HH:mm:ss}){magenta} %p - %msg%n"
+    # console: "%black(%d{ISO8601}) %highlight(%-5level) %p [%blue(%t{15})] %yellow(%C{1.}) - %msg%n%throwable"
+    # console: "%black(%d{ISO8601}) %highlight(%-5level) %p ${PID:-} [%blue(%15.15t{15})] [%yellow(%30.30C{1.} #%-4.4L)] - %msg%n%throwable"
+    file: "%d %-5level [%-10.10thread] [%-30.30logger{29}] - %msg%n"
+    
   level:
     root: info
     org.tain.controller.*: info
@@ -111,6 +119,9 @@ logging:
     org.hibernate.type: info
     # show sql values
     org.hibernate.type.descriptor.sql.BasicBinder: trace
+    # -------------------
+    org.thymeleaf: info
+    org.h2.server.web: info
 
 
 ########################################################
