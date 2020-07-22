@@ -47,6 +47,12 @@ spring:
   devtools:
     livereload.enabled: true
   
+  profiles.active:
+    - lns-default
+    - lns-local
+    - lns-dev
+    - lns-real
+
 
 #########################################################
 #
@@ -227,6 +233,30 @@ logging:
 
 
 
+#------------------------------------------------
+---
+spring.profiles: lns-default
+
+lns-env:
+  name: DEFALT
+  
+---
+spring.profiles: lns-local
+
+lns-env:
+  name: LOCAL
+
+---
+spring.profiles: lns-dev
+
+lns-env:
+  name: DEV
+
+---
+spring.profiles: lns-real
+
+lns-env:
+  name: REAL
 
 
 
