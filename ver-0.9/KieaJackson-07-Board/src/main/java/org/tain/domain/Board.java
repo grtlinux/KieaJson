@@ -81,7 +81,7 @@ public class Board {
 	private LocalDateTime createdDate = LocalDateTime.now();
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+	@JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
 	@Column(name = "job_date")
 	@ColumnPosition(7)
 	@UpdateTimestamp
