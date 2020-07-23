@@ -23,6 +23,7 @@ import org.tain.annotation.ColumnPosition;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.Builder;
 import lombok.Data;
@@ -106,5 +107,21 @@ public class Board {
 		//this.jobDate = new Date();
 		//this.workDate = new Timestamp(this.jobDate.getTime());
 		//this.workDate = new Timestamp(System.currentTimeMillis());
+	}
+	
+	public String toJson() {
+		try {
+			return new ObjectMapper().writeValueAsString(this);
+		} catch (Exception e) {
+			return "{}";
+		}
+	}
+	
+	public String toPrettyJson() {
+		try {
+			return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(this);
+		} catch (Exception e) {
+			return "{}";
+		}
 	}
 }
